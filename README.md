@@ -1,800 +1,561 @@
 ﻿<div align="center">
 
-![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,20,24&height=300&section=header&text=In Fortune AI%20Desktop&fontSize=70&fontAlignY=35&desc=Professional%20Stock%20Analysis%20%26%20AI%20Assistant&descSize=25&descAlignY=55&animation=twinkling)
+![Header](https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:1f6feb&height=300&section=header&text=In%20Fortune%20AI&fontSize=80&fontAlignY=32&desc=AI-Powered%20Stock%20Analysis%20%7C%20Multi-Model%20%7C%20Real-Time%20Market%20Data&descSize=22&descAlignY=56&fontColor=58a6ff&animation=twinkling)
 
-<p align="center">
-  <strong>🌟 久经风雨，财智自成 | Mathematics is the language of nature 🌟</strong>
-</p>
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=60&lines=Intelligent+Stock+Analysis+%26+Investment+Assistant;20%2B+AI+Models+%7C+BaoStock+%7C+East+Money)](https://github.com/sjkncs/infortune-ai-desktop)
 
-<p align="center">
-  <a href="#-项目简介">项目简介</a> •
-  <a href="#-核心功能">核心功能</a> •
-  <a href="#-desktop-app">桌面应用</a> •
-  <a href="#-技术架构">技术架构</a> •
-  <a href="#-快速开始">快速开始</a> •
-  <a href="#-api文档">API文档</a>
-</p>
+<br/>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Vue-3.4+-42b883?style=for-the-badge&logo=vue.js&logoColor=white" alt="Vue">
-  <img src="https://img.shields.io/badge/TypeScript-5.3+-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Electron-Latest-47848f?style=for-the-badge&logo=electron&logoColor=white" alt="Electron">
-  <img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/FastAPI-0.104+-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
-</p>
+<a href="https://github.com/sjkncs/infortune-ai-desktop/releases/latest"><img src="https://img.shields.io/github/v/release/sjkncs/infortune-ai-desktop?style=for-the-badge&logo=github&logoColor=white&label=Release&color=238636" alt="Release"></a>
+<a href="https://github.com/sjkncs/infortune-ai-desktop/stargazers"><img src="https://img.shields.io/github/stars/sjkncs/infortune-ai-desktop?style=for-the-badge&logo=github&logoColor=white&label=Stars&color=e3b341" alt="Stars"></a>
+<a href="https://github.com/sjkncs/infortune-ai-desktop/network/members"><img src="https://img.shields.io/github/forks/sjkncs/infortune-ai-desktop?style=for-the-badge&logo=git&logoColor=white&label=Forks&color=8957e5" alt="Forks"></a>
+<a href="https://github.com/sjkncs/infortune-ai-desktop/blob/master/LICENSE"><img src="https://img.shields.io/github/license/sjkncs/infortune-ai-desktop?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=3fb950" alt="License"></a>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/AI-Powered-FF6B6B?style=for-the-badge" alt="AI">
-  <img src="https://img.shields.io/badge/Stock-Analysis-4ECDC4?style=for-the-badge" alt="Stock">
-  <img src="https://img.shields.io/badge/Desktop-App-95E1D3?style=for-the-badge" alt="Desktop">
-</p>
+<br/>
+
+<img src="https://img.shields.io/badge/Electron-28+-47848f?style=flat-square&logo=electron&logoColor=white" alt="Electron">
+<img src="https://img.shields.io/badge/Vue-3.4+-42b883?style=flat-square&logo=vue.js&logoColor=white" alt="Vue">
+<img src="https://img.shields.io/badge/TypeScript-5.3+-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+<img src="https://img.shields.io/badge/Python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/FastAPI-0.104+-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
+<img src="https://img.shields.io/badge/TailwindCSS-3.4+-06b6d4?style=flat-square&logo=tailwindcss&logoColor=white" alt="TailwindCSS">
+<img src="https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js">
+
+<br/><br/>
+
+<a href="#-quick-start">Quick Start</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#-whats-new-in-v100">What's New</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#-multi-model-ai-engine">AI Models</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#-real-time-market-data">Market Data</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#-architecture">Architecture</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#-api-reference">API</a>
 
 </div>
 
----
+<br/>
 
-## 📖 项目简介
+> [!NOTE]
+> **In Fortune AI** is a professional AI-powered stock analysis platform featuring a desktop client (Electron) and a web app (Vue 3). It integrates **20+ AI models** (Gemini, GPT, Grok), **real-time Chinese A-share market data** via BaoStock & East Money, strategy backtesting, and portfolio management.
 
-**In Fortune AI Desktop** 是一款专业的**AI驱动股票分析系统**，包含**Web端**和**桌面客户端**两个版本。本项目基于 [@QoneFeng](https://github.com/QoneFeng) 的优秀开源项目 [InFortune.ai](https://github.com/QoneFeng/InFortune.ai) 进行深度扩展，新增了功能完整的 **Electron 桌面应用**，提供更加原生、流畅的用户体验。
-
-### 🎯 项目愿景
-
-> **久经风雨，财智自成** - 为投资者提供全面、准确、智能的市场分析工具
-
-### ✨ 核心亮点
-
-- 🖥️ **跨平台桌面应用** - 基于Electron的原生体验
-- 🤖 **AI智能分析** - 深度学习驱动的股票分析
-- 📊 **多市场支持** - A股、港股、美股全覆盖
-- 💼 **智能组合管理** - 自动化投资组合优化
-- 📈 **实时行情追踪** - 毫秒级数据更新
-- 🎨 **现代化UI** - 优雅、直观的界面设计
-- 🔧 **高度可定制** - 丰富的个性化设置
+> [!TIP]
+> Based on [@QoneFeng](https://github.com/QoneFeng)'s open-source project **[InFortune.ai](https://github.com/QoneFeng/InFortune.ai)**, extensively enhanced with a full Electron desktop app, multi-model AI support, and real-time data integration.
 
 ---
 
-## 🙏 致谢原作者
+## 🚀 What's New in v1.0.0
 
-本项目基于 [@QoneFeng](https://github.com/QoneFeng) 的原创项目 **[InFortune.ai](https://github.com/QoneFeng/InFortune.ai)** 进行扩展开发。
+<table>
+<tr>
+<td width="50%">
 
-### 原项目核心功能
+### 🤖 Multi-Model AI Engine
+- **20+ AI models** with in-chat model selector
+- Gemini 2.5/3 Pro & Flash (dialogue, search, tool-calling)
+- GPT-4o, GPT-5, GPT-5.2, Grok-4
+- Image generation (Gemini Flash/Pro)
+- Model selection persisted per session
 
-原作者 QoneFeng 构建了一个完整的全栈股票分析系统，包括：
+</td>
+<td width="50%">
 
-#### 🌐 Web端功能
-- 📊 **多市场实时行情** - A股、港股、美股、场外基金、ETF实时数据
-- 💼 **智能持仓管理** - 自选持仓分析，市场分布、行业分类、多维度筛选
-- 📈 **技术分析工具** - MA5/10/20/30/50均线、K线图表、涨跌幅分析
-- 🔍 **智能搜索系统** - 股票代码、名称模糊查询，实时搜索建议
-- 💹 **指数估值分析** - PE/PB估值分位、业绩预测、投资建议评分
-- 🎛️ **管理后台** - 股票/持仓/估值数据的增删改查管理
-- 📱 **响应式设计** - 现代化UI，支持桌面端和移动端
-- 🚀 **多数据源容错** - 东方财富/新浪财经/腾讯财经自动切换
-- 📤 **数据导出** - 支持Excel导出持仓数据
+### 📈 Real-Time Market Data
+- **3-tier data fallback**: Backend → BaoStock → East Money
+- Shanghai Composite, Shenzhen Component, ChiNext, CSI 300
+- BaoStock direct K-line fetching (port 8001)
+- East Money free API for real-time index quotes
+- Auto-refresh with configurable intervals
 
-#### 🏗️ 技术架构
-- **前端**: Vue 3 + TypeScript + Vite + TailwindCSS
-- **后端**: Node.js + Express + LowDB
-- **数据服务**: Python + FastAPI + AKShare + BaoStock
-- **可视化**: ECharts 5.5+
+</td>
+</tr>
+<tr>
+<td width="50%">
 
-**感谢 QoneFeng 的杰出工作，为本项目奠定了坚实的基础！** 🎉
+### 💬 Enhanced Chat Interface
+- File upload (images, PDF, Excel, CSV, Markdown)
+- Voice input via Web Speech API
+- Chat history with timestamps (like Doubao/Qwen)
+- Categorized model dropdown with descriptions
 
----
+</td>
+<td width="50%">
 
-## 🖥️ Desktop App - 全新桌面应用
+### 🖥️ Desktop App Improvements
+- Fixed Windows keyboard input/IME in Electron
+- Updated CSP for multi-source data access
+- Role-based Electron menus for full compatibility
+- Detached DevTools to prevent focus stealing
 
-在原项目基础上，我们开发了功能完整的 **Electron 桌面客户端**，提供更加原生、高效的用户体验。
-
-### 🎨 桌面应用特性
-
-#### ✅ 核心功能模块
-
-##### 1. **智能分析 (AI Chat)**
-<div align="center">
-
-| 功能 | 说明 |
-|:----:|:-----|
-| 🤖 **AI对话分析** | 自然语言交互，智能理解投资意图 |
-| 💬 **多轮对话** | 支持上下文理解，连续深度分析 |
-| 📝 **历史记录** | 自动保存对话，便于回顾查阅 |
-| 🎯 **快捷功能** | 6大快捷卡片：市场概览、股票查询、技术分析、新闻舆情、AI预测、风险评估 |
-| 📊 **技术标签** | 8种技术指标：MACD、KDJ、均线系统、成交量、布林带、RSI、支撑位、压力位 |
-
-</div>
-
-##### 2. **市场行情 (Market View)**
-<div align="center">
-
-| 指数 | 功能特点 |
-|:----:|:--------|
-| 📈 **上证指数** | 实时价格、涨跌幅、成交量 |
-| 📊 **深证成指** | 市场动态、资金流向 |
-| 🚀 **创业板指** | 技术走势、板块热度 |
-| 💹 **沪深300** | 估值分析、投资建议 |
-
-**自动刷新**: 支持 5/10/30/60/300 秒可选间隔
-
-</div>
-
-##### 3. **个股分析 (Stock Analysis)**
-- 🔍 **智能搜索** - 支持股票代码、名称模糊搜索
-- ⚡ **快速查询** - Enter键 / 搜索按钮触发
-- 🎯 **自动分析** - 搜索后自动切换到AI分析视图
-- 📊 **多维数据** - 基本面、技术面、最新动态一网打尽
-
-##### 4. **投资组合 (Portfolio)**
-- 💼 持仓管理（待集成后端API）
-- 📊 收益统计
-- 🎯 资产配置建议
-
-##### 5. **策略回测 (Strategy Backtest)**
-- 💡 策略设计工具（待集成）
-- 📈 历史数据回测
-- 📊 性能指标评估
+</td>
+</tr>
+</table>
 
 ---
 
-### ⚙️ 设置系统 (Settings)
+## 🤖 Multi-Model AI Engine
 
-桌面应用提供了**功能完整、美观统一的设置界面**：
+In Fortune AI integrates **20+ AI models** across 5 categories, selectable directly from the chat interface:
 
 <div align="center">
 
-#### 🎛️ 8大设置模块
-
-| 模块 | 功能说明 |
-|:----:|:--------|
-| 🔧 **通用设置** | 启动选项、托盘设置、历史记录管理 |
-| 🎨 **外观设置** | 主题模式(浅色/深色/自动)、6种主题色、字体大小、输入框高度、行间距、侧边栏宽度、动画效果 |
-| 🌍 **语言设置** | 简体中文/繁體中文/English/日本語、自动翻译 |
-| 📡 **数据源设置** | API服务器配置、刷新频率(5/10/30/60/300秒)、实时数据开关 |
-| 🔔 **通知设置** | 桌面通知、声音提示、价格预警 |
-| ⌨️ **快捷键设置** | 全局快捷键配置、自定义按键绑定 |
-| 🔬 **高级设置** | 开发者模式、硬件加速、缓存清理、数据导出 |
-| ℹ️ **关于** | 应用信息、版本号、官网链接、文档链接、GitHub链接 |
-
-</div>
-
-#### 🎨 外观定制
-
-<div align="center">
-
-| 设置项 | 可选范围 |
-|:------:|:--------|
-| 🎨 **主题色** | 蓝色、紫色、绿色、橙色、红色、粉色 + 自定义颜色 |
-| 📏 **字体大小** | 12px - 20px（滑块调节） |
-| 📝 **输入框高度** | 60px - 200px（滑块调节） |
-| 📊 **行间距** | 紧凑(1.4) / 标准(1.6) / 舒适(1.8) / 宽松(2.0) |
-| 📐 **侧边栏宽度** | 200px - 400px（滑块调节） |
-| ✨ **动画效果** | 开启 / 关闭 |
+```
+┌──────────────────────────────────────────────────────────┐
+│  🤖 Model Selector                              ▼       │
+├──────────────────────────────────────────────────────────┤
+│  💬 DIALOGUE    │ Gemini 3 Flash / 2.5 Pro / 3 Pro      │
+│  🔍 SEARCH      │ Gemini 3 Pro Search / 2.5 Flash Search│
+│  🔧 TOOL-CALL   │ Gemini 3 Pro (Tool) / 2.5 Flash (Tool)│
+│  🤖 GPT / GROK  │ GPT-5 / GPT-4o / GPT-5.2 / Grok-4    │
+│  🎨 IMAGE GEN   │ Gemini Flash 生图 / Gemini Pro 生图    │
+└──────────────────────────────────────────────────────────┘
+```
 
 </div>
-
----
-
-### 🔄 路由系统
-
-桌面应用实现了**完整的功能路由**，共 **47个路由节点**：
 
 <details>
-<summary><b>📋 点击查看完整路由列表</b></summary>
+<summary><b>📋 Complete Model Catalog (click to expand)</b></summary>
 
-#### 主导航路由 (5个)
-- `chat` - 智能分析
-- `market` - 市场行情
-- `stock` - 个股分析
-- `portfolio` - 投资组合
-- `strategy` - 策略回测
+<br/>
 
-#### 快捷功能路由 (6个)
-- 市场概览
-- 股票查询
-- 技术分析
-- 新闻舆情
-- AI预测
-- 风险评估
+| Category | Model ID | Name | Description |
+|:--------:|:---------|:-----|:------------|
+| 💬 Dialogue | `gemini-3-flash` | Gemini 3 Flash | Best cost-performance, half the price of 2.5 Pro |
+| 💬 Dialogue | `gemini-2.5-pro` | Gemini 2.5 Pro | 1M context, built-in chain-of-thought + search |
+| 💬 Dialogue | `gemini-3-pro` | Gemini 3 Pro | Latest Pro model, slightly higher cost |
+| 💬 Dialogue | `gemini-2.5-flash` | Gemini 2.5 Flash | Fast response model |
+| 🔍 Search | `gemini-3-pro-search` | Gemini 3 Pro Search | Real-time web search built-in |
+| 🔍 Search | `gemini-2.5-pro-search` | Gemini 2.5 Pro Search | Real-time web search built-in |
+| 🔍 Search | `gemini-2.5-flash-search` | Gemini 2.5 Flash Search | Fast search model (default) |
+| 🔍 Search | `gemini-3-flash-search` | Gemini 3 Flash Search | Fast search model |
+| 🔧 Tool | `gemini-3-pro-no` | Gemini 3 Pro (Tool) | Search disabled, custom tools supported |
+| 🔧 Tool | `gemini-2.5-pro-no` | Gemini 2.5 Pro (Tool) | Search disabled, custom tools supported |
+| 🔧 Tool | `gemini-2.5-flash-no` | Gemini 2.5 Flash (Tool) | Search disabled, custom tools supported |
+| 🔧 Tool | `gemini-3-flash-no` | Gemini 3 Flash (Tool) | Search disabled, custom tools supported |
+| 🤖 GPT | `gpt-5` | GPT-5 | OpenAI's latest flagship |
+| 🤖 GPT | `gpt-4o` | GPT-4o | OpenAI multimodal model |
+| 🤖 GPT | `gpt-5.2` | GPT-5.2 | OpenAI advanced version |
+| 🤖 GPT | `grok-4` | Grok-4 | xAI Grok model |
+| 🎨 Image | `gemini-2.5-flash-image-preview` | Gemini Flash Image Gen | ~$0.01/image, English prompts recommended |
+| 🎨 Image | `gemini-3-pro-image-preview` | Gemini Pro Image Gen | High-quality, ~$0.04/image |
 
-#### 技术指标路由 (8个)
-- MACD分析
-- KDJ指标
-- 均线系统
-- 成交量分析
-- 布林带
-- RSI强弱
-- 支撑位
-- 压力位
+</details>
 
-#### 工具栏路由 (3个)
-- 实时数据
-- 技术指标
-- 相关新闻
+> [!IMPORTANT]
+> The model selector remembers your last choice via `localStorage`. The selected model is sent to the backend `/api/chat` endpoint as the `model` parameter. All models are served through the **HiAPI** unified gateway (`https://hiapi.online/v1`).
 
-#### 设置页面路由 (8个)
-- 通用、外观、语言、数据源、通知、快捷键、高级、关于
+---
 
-#### 其他功能路由 (17个)
-- 对话管理、消息发送、股票搜索、数据刷新等
+## 📈 Real-Time Market Data
+
+Market data uses a **3-tier fallback architecture** for maximum reliability:
+
+```mermaid
+graph LR
+    A[Desktop App] --> B{Source 1: Backend API}
+    B -->|Success| Z[Display Data]
+    B -->|Fail| C{Source 2: BaoStock Direct}
+    C -->|Success| Z
+    C -->|Fail| D{Source 3: East Money API}
+    D -->|Success| Z
+    D -->|Fail| E[All Sources Unavailable]
+    
+    style A fill:#1f6feb,color:#fff
+    style Z fill:#238636,color:#fff
+    style E fill:#da3633,color:#fff
+```
+
+<div align="center">
+
+| Source | URL | Data Type | Latency |
+|:------:|:----|:----------|:-------:|
+| **Backend Proxy** | `localhost:3001/api/market/overview` | Aggregated indices | ~200ms |
+| **BaoStock Direct** | `127.0.0.1:8001/api/kline/history` | Daily K-line (OHLCV) | ~500ms |
+| **East Money** | `push2.eastmoney.com` | Real-time quotes | ~300ms |
+
+</div>
+
+<details>
+<summary><b>📊 Supported Indices</b></summary>
+
+| Index | Code | BaoStock Code | East Money SecID |
+|:------|:----:|:-------------|:-----------------|
+| Shanghai Composite (上证指数) | `000001` | `sh.000001` | `1.000001` |
+| Shenzhen Component (深证成指) | `399001` | `sz.399001` | `0.399001` |
+| ChiNext (创业板指) | `399006` | `sz.399006` | `0.399006` |
+| CSI 300 (沪深300) | `000300` | `sh.000300` | `1.000300` |
 
 </details>
 
 ---
 
-### 🛠️ 桌面应用技术栈
+## 🖥️ Desktop Application
+
+### 10 View Modules
 
 <div align="center">
 
-| 技术 | 版本 | 用途 |
-|:----:|:----:|:-----|
-| **Electron** | Latest | 跨平台桌面应用框架 |
-| **HTML5** | - | 界面结构 |
-| **CSS3** | - | 样式设计（使用CSS变量主题系统） |
-| **JavaScript** | ES6+ | 业务逻辑 |
-| **LocalStorage** | - | 本地数据存储 |
-| **IPC通信** | - | 主进程与渲染进程通信 |
+| # | Module | View ID | Description |
+|:-:|:-------|:-------:|:------------|
+| 1 | 🤖 **Smart Analysis** | `chat` | AI-powered chat with model selector, file upload, voice input |
+| 2 | 📈 **Market Overview** | `market` | Real-time indices with multi-source data fallback |
+| 3 | 📊 **Stock Analysis** | `stock` | Individual stock search and fundamental/technical analysis |
+| 4 | ⭐ **Watchlist** | `zixuan` | Custom stock watchlist with real-time monitoring |
+| 5 | 💼 **Portfolio** | `portfolio` | Holdings management with P&L tracking |
+| 6 | 📉 **Index Analysis** | `zhishu` | Index valuation (PE/PB percentile analysis) |
+| 7 | 📦 **ETF Market** | `etf` | ETF listings with search, sort by volume/change/amount |
+| 8 | 🧪 **Strategy Backtest** | `strategy` | MA/MACD/KDJ/RSI/Bollinger strategies with equity curves |
+| 9 | 🔀 **Mode Switch** | `mode` | Toggle between Local and Web modes |
+| 10 | ⚙️ **Settings** | `settings` | 8 setting panels: General, Appearance, Language, Data, etc. |
 
 </div>
 
----
-
-### 📦 桌面应用文件结构
+### Chat Interface Features
 
 ```
-desktop-app/
-├── 📄 main.js                    # Electron主进程
-├── 📄 preload.js                 # 预加载脚本
-├── 📄 package.json               # 依赖配置
-├── 📄 index.html                 # 主窗口页面
-├── 📄 settings.html              # 设置窗口页面
-├── 📄 installer.nsh              # NSIS安装脚本
-│
-├── 📁 scripts/                   # JavaScript模块
-│   ├── app.js                    # 主应用逻辑
-│   ├── api.js                    # API接口封装
-│   └── settings.js               # 设置页面逻辑
-│
-├── 📁 styles/                    # 样式文件
-│   ├── main.css                  # 主样式
-│   ├── views.css                 # 视图样式
-│   └── settings.css              # 设置页面样式
-│
-├── 📁 assets/                    # 资源文件
-│   ├── icon.ico                  # Windows图标
-│   ├── icon.png                  # macOS/Linux图标
-│   └── tray-icon.png             # 托盘图标
-│
-└── 📄 QUICK_START_DESKTOP.md     # 桌面应用快速开始指南
+┌─────────────────────────────────────────────────────────────┐
+│  📜 Chat History (sidebar)          │  Welcome / Messages   │
+│  ─────────────────────              │                       │
+│  💬 贵州茅台分析  14:30             │  [Model: Gemini 2.5]  │
+│  💬 市场行情概览  13:15             │  ┌─────────────────┐  │
+│  💬 技术指标讨论  11:20             │  │ 🤖 Model Selector│  │
+│                                     │  └─────────────────┘  │
+│                                     │  ┌─────────────────┐  │
+│                                     │  │📎 [text] 🎤 ➤  │  │
+│                                     │  └─────────────────┘  │
+│                                     │  [实时数据][技术][新闻]│
+└─────────────────────────────────────────────────────────────┘
 ```
+
+- **Model Selector** — categorized dropdown above input, persistent selection
+- **File Upload** — images, PDF, Word, Excel, CSV, Markdown
+- **Voice Input** — Web Speech API with recording indicator
+- **Chat History** — timestamped conversations saved to localStorage
 
 ---
 
-### 🚀 桌面应用启动
-
-#### 开发模式
-
-```bash
-cd desktop-app
-npm install
-npm start
-```
-
-#### 打包发布
-
-```bash
-# Windows
-npm run build:win
-
-# macOS
-npm run build:mac
-
-# Linux
-npm run build:linux
-
-# 全平台
-npm run build:all
-```
-
-#### 安装包位置
-
-打包完成后，安装包位于 `desktop-app/dist/` 目录：
-- Windows: `infortune-ai-Setup-1.0.0.exe`
-- macOS: `infortune-ai-1.0.0.dmg`
-- Linux: `infortune-ai-1.0.0.AppImage`
-
----
-
-### 📸 桌面应用界面预览
+## 🏗️ Architecture
 
 <div align="center">
 
-#### 🎨 主界面 - 智能分析
-- 💬 AI对话窗口
-- 🎯 6大快捷功能卡片
-- 🏷️ 8种技术指标标签
-- 📝 历史记录管理
-
-#### 📊 市场行情视图
-- 📈 四大主要指数实时展示
-- 🔄 自动刷新（5/10/30/60/300秒可选）
-- 📊 涨跌幅动态显示
-- 💰 成交额统计
-
-#### ⚙️ 设置界面
-- 🎨 8大设置模块
-- 🌈 6种预设主题色
-- 🌓 深色/浅色模式切换
-- 📏 界面布局自定义
-
-> 💡 **提示**: 实际截图将在后续版本中添加
+```
+                          ┌─────────────────────┐
+                          │   Electron Desktop   │
+                          │    (main.js + UI)    │
+                          └──────────┬──────────┘
+                                     │
+              ┌──────────────────────┼──────────────────────┐
+              │                      │                      │
+     ┌────────▼────────┐   ┌────────▼────────┐   ┌────────▼────────┐
+     │  Vue 3 Web App  │   │  Express Backend │   │  Admin Panel    │
+     │  :5173           │   │  :3001           │   │  :5174          │
+     └─────────────────┘   └────────┬─────────┘   └─────────────────┘
+                                    │
+                    ┌───────────────┼───────────────┐
+                    │               │               │
+           ┌────────▼──────┐ ┌─────▼──────┐ ┌──────▼───────┐
+           │ HiAPI Gateway │ │  BaoStock  │ │  East Money  │
+           │ (AI Models)   │ │  :8001     │ │   (Free API) │
+           └───────────────┘ └────────────┘ └──────────────┘
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+   ┌────▼───┐ ┌────▼───┐ ┌────▼───┐
+   │ Gemini │ │  GPT   │ │  Grok  │
+   │ 2.5/3  │ │ 4o/5   │ │   4    │
+   └────────┘ └────────┘ └────────┘
+```
 
 </div>
+
+### Service Ports
+
+| Service | Port | Technology | Purpose |
+|:--------|:----:|:-----------|:--------|
+| **Desktop App** | — | Electron 28 | Native desktop client |
+| **Web Frontend** | `5173` | Vue 3 + Vite + TailwindCSS | Web interface |
+| **Admin Panel** | `5174` | Vue 3 + Vite | Data management |
+| **API Server** | `3001` | Express + LowDB + WebSocket | REST API + real-time push |
+| **AKShare Service** | `8000` | FastAPI + AKShare | Multi-market stock data |
+| **BaoStock Service** | `8001` | FastAPI + BaoStock | A-share financial data |
+| **ML Service** | `8002` | Python | Stock prediction inference |
 
 ---
 
-## 🏗️ Web端技术架构
+## ⚡ Quick Start
 
-### 整体架构
+### Prerequisites
 
-<div align="center">
+```
+Node.js >= 18.0.0  |  Python >= 3.11  |  npm >= 9.0.0
+```
 
-| 层级 | 技术栈 | 端口 | 功能描述 |
-|:----:|:------:|:----:|:--------|
-| **Desktop App** | Electron + HTML/CSS/JS | - | 原生桌面应用 |
-| **用户前端** | Vue 3 + TypeScript + Vite | 5173 | Web界面 |
-| **管理后台** | Vue 3 + TypeScript + Vite | 5174 | 数据管理 |
-| **Node.js 后端** | Express + LowDB | 3001 | API服务 |
-| **Python 数据服务** | FastAPI + AKShare | 8000 | 实时行情 |
-| **Python 财务服务** | FastAPI + BaoStock | 8001 | 财务数据 |
-
-</div>
-
-### 前端技术栈
-
-<div align="center">
-
-| 技术 | 版本 | 用途 |
-|:----:|:----:|:-----|
-| **Vue** | 3.4+ | 渐进式JavaScript框架 |
-| **TypeScript** | 5.3+ | 静态类型检查 |
-| **Vite** | 5.0+ | 下一代构建工具 |
-| **TailwindCSS** | 3.4+ | 实用优先CSS框架 |
-| **Vue Router** | 4.2+ | 官方路由管理器 |
-| **Pinia** | 2.1+ | 新一代状态管理 |
-| **ECharts** | 5.5+ | 强大的数据可视化库 |
-| **Axios** | 1.6+ | Promise based HTTP客户端 |
-| **Day.js** | 1.11+ | 轻量级日期处理库 |
-| **XLSX** | 0.18+ | Excel数据处理 |
-
-</div>
-
----
-
-## 🚀 快速开始
-
-### 环境要求
-
-- **Node.js** >= 18.0.0
-- **Python** >= 3.11
-- **npm** >= 9.0.0
-
-### 1. 克隆项目
+### 1. Clone & Install
 
 ```bash
-git clone https://github.com/sjkncs/InFortune.ai-desktop.git
-cd InFortune.ai-desktop
+git clone https://github.com/sjkncs/infortune-ai-desktop.git
+cd infortune-ai-desktop
+
+# Desktop app
+cd desktop-app && npm install
+
+# Backend server
+cd ../website && npm install
+
+# BaoStock service (optional)
+cd ../baostock && pip install -r requirements.txt
 ```
 
-### 2. 启动桌面应用
+### 2. Configure
 
 ```bash
-cd desktop-app
-npm install
-npm start
+# Copy and edit .env
+cp .env.example .env
 ```
-
-### 3. 启动Web端（可选）
-
-#### 安装依赖
-
-```bash
-# 用户前端
-cd website
-npm install
-
-# 管理后台
-cd ../admin
-npm install
-
-# Python数据服务
-cd ../akshare
-pip install -r requirements.txt
-
-cd ../baostock
-pip install -r requirements.txt
-```
-
-#### 启动服务
-
-需要在不同终端中启动以下服务：
-
-```bash
-# 终端 1 - AKShare数据服务
-cd akshare
-python start.py
-# http://localhost:8000
-
-# 终端 2 - BaoStock数据服务
-cd baostock
-python start.py
-# http://localhost:8001
-
-# 终端 3 - Node.js后端
-cd website
-npm run server
-# http://localhost:3001
-
-# 终端 4 - 用户前端
-cd website
-npm run dev
-# http://localhost:5173
-
-# 终端 5 - 管理后台
-cd admin
-npm run dev
-# http://localhost:5174
-```
-
----
-
-## 📚 API文档
-
-### 服务端口说明
-
-<div align="center">
-
-| 服务 | 端口 | 文档 |
-|:----:|:----:|:----:|
-| Desktop App | - | [QUICK_START_DESKTOP.md](desktop-app/QUICK_START_DESKTOP.md) |
-| 用户前端 | 5173 | - |
-| 管理后台 | 5174 | - |
-| Node.js后端 | 3001 | - |
-| AKShare服务 | 8000 | http://localhost:8000/docs |
-| BaoStock服务 | 8001 | http://localhost:8001/docs |
-
-</div>
-
-### 主要API接口
-
-<details>
-<summary><b>📋 Node.js API (端口: 3001)</b></summary>
-
-| 接口 | 方法 | 说明 |
-|:-----|:----:|:-----|
-| `/api/search` | GET | 搜索股票（代码/名称模糊查询） |
-| `/api/stocks` | GET | 获取股票列表（含实时价格和MA数据） |
-| `/api/portfolio` | GET | 获取自选持仓（含实时价格和MA数据） |
-| `/api/save-portfolio` | POST | 保存持仓数据 |
-| `/api/save-stocks` | POST | 保存股票列表 |
-| `/api/valuation` | GET | 获取指数估值（PE/PB估值分位） |
-| `/api/stock/:code` | GET | 获取股票详情（盘口、市值、估值指标） |
-| `/api/stock/:code/kline` | GET | 获取K线数据（支持多周期） |
-| `/api/etf` | GET | 获取ETF列表（含实时行情） |
-| `/api/health` | GET | 健康检查 |
-
-</details>
-
-<details>
-<summary><b>📊 AKShare API (端口: 8000)</b></summary>
-
-#### A股数据
-
-| 接口 | 说明 |
-|:-----|:-----|
-| `/api/a/stock/realtime/{symbol}` | A股实时行情 |
-| `/api/a/stock/history/{symbol}` | A股历史K线 |
-| `/api/a/stock/list` | A股股票列表 |
-| `/api/a/stock/search` | A股股票搜索 |
-
-#### 多市场支持
-
-- 港股: `/api/hk/stock/*`
-- 美股: `/api/us/stock/*`
-- ETF: `/api/etf/*`
-- 指数: `/api/index/*`
-
-</details>
-
-<details>
-<summary><b>💰 BaoStock API (端口: 8001)</b></summary>
-
-#### 财务数据（2007年至今）
-
-| 接口 | 说明 |
-|:-----|:-----|
-| `/api/finance/profit/{code}` | 盈利能力（ROE、净利率、毛利率） |
-| `/api/finance/operation/{code}` | 营运能力（周转率） |
-| `/api/finance/growth/{code}` | 成长能力（增长率） |
-| `/api/finance/balance/{code}` | 偿债能力（流动比率、资产负债率） |
-| `/api/finance/cash-flow/{code}` | 现金流量 |
-| `/api/finance/dupont/{code}` | 杜邦指数 |
-
-#### 宏观经济数据
-
-| 接口 | 说明 |
-|:-----|:-----|
-| `/api/macro/deposit-rate` | 存款利率 |
-| `/api/macro/loan-rate` | 贷款利率 |
-| `/api/macro/required-reserve-ratio` | 存款准备金率 |
-| `/api/macro/money-supply` | 货币供应量 |
-
-</details>
-
----
-
-## 📁 完整项目结构
-
-```
-InFortune.ai-desktop/
-├── 📁 desktop-app/              # 🆕 Electron桌面应用
-│   ├── main.js
-│   ├── index.html
-│   ├── settings.html
-│   ├── 📁 scripts/
-│   ├── 📁 styles/
-│   ├── 📁 assets/
-│   ├── package.json
-│   └── QUICK_START_DESKTOP.md
-│
-├── 📁 website/                  # 用户前端 + Node.js后端
-│   ├── 📁 src/                  # Vue前端源码
-│   │   ├── 📁 api/
-│   │   ├── 📁 components/
-│   │   ├── 📁 views/
-│   │   │   ├── Home.vue
-│   │   │   ├── Zixuan.vue
-│   │   │   ├── QuotationCenter.vue
-│   │   │   ├── Zhishu.vue
-│   │   │   └── StockDetail.vue
-│   │   ├── 📁 router/
-│   │   ├── 📁 types/
-│   │   └── main.ts
-│   ├── 📁 server/               # Node.js后端
-│   │   ├── index.js
-│   │   ├── stock-service.js
-│   │   ├── akshare-service.js
-│   │   └── 📁 data/
-│   │       └── db.json
-│   ├── package.json
-│   └── vite.config.ts
-│
-├── 📁 admin/                    # 管理后台
-│   ├── 📁 src/
-│   │   ├── 📁 views/
-│   │   │   ├── Dashboard.vue
-│   │   │   ├── StockManage.vue
-│   │   │   ├── PortfolioManage.vue
-│   │   │   └── ValuationManage.vue
-│   │   └── main.ts
-│   └── package.json
-│
-├── 📁 akshare/                  # AKShare Python数据服务
-│   ├── app.py
-│   ├── start.py
-│   ├── requirements.txt
-│   └── README.md
-│
-├── 📁 baostock/                 # BaoStock Python数据服务
-│   ├── app.py
-│   ├── start.py
-│   ├── requirements.txt
-│   └── README.md
-│
-├── 📁 data/                     # 数据目录
-├── 📁 logs/                     # 日志目录
-├── .gitignore
-└── README.md                    # 本文件
-```
-
----
-
-## 🎯 核心功能对比
-
-<div align="center">
-
-| 功能 | Web端 | Desktop App | 说明 |
-|:----:|:----:|:-----------:|:-----|
-| 📊 实时行情 | ✅ | ✅ | 多市场实时数据 |
-| 💼 持仓管理 | ✅ | ⏳ | 桌面版待集成后端 |
-| 📈 技术分析 | ✅ | ✅ | K线、指标分析 |
-| 🔍 智能搜索 | ✅ | ✅ | 模糊查询、实时建议 |
-| 💹 指数估值 | ✅ | ⏳ | PE/PB分位分析 |
-| 🎛️ 管理后台 | ✅ | ❌ | Web专属功能 |
-| 🤖 AI对话 | ⏳ | ✅ | **桌面版独有** |
-| 🎨 主题定制 | ⏳ | ✅ | **桌面版独有** |
-| 📱 托盘功能 | ❌ | ✅ | **桌面版独有** |
-| 🔔 桌面通知 | ❌ | ✅ | **桌面版独有** |
-| ⌨️ 快捷键 | ❌ | ✅ | **桌面版独有** |
-
-</div>
-
----
-
-## 📝 更新日志
-
-### v2.0.0 (2024-02) - 桌面应用版本 🎉
-
-#### 🆕 新增功能
-- ✨ **Electron桌面应用** - 完整的跨平台桌面客户端
-- 🤖 **AI智能对话** - 自然语言股票分析助手
-- 🎨 **设置系统** - 8大设置模块，高度可定制
-- 🎯 **快捷功能** - 6大快捷卡片 + 8种技术指标标签
-- 📊 **市场行情视图** - 四大指数实时监控
-- 🔍 **智能股票搜索** - 快速查询并自动分析
-- 🔄 **自动数据刷新** - 可配置刷新间隔
-- 💾 **本地数据存储** - LocalStorage持久化
-- 📱 **系统托盘** - 最小化到托盘（规划中）
-- 🔔 **桌面通知** - 价格预警提醒（规划中）
-
-#### 🎨 界面改进
-- 现代化渐变色设计
-- 6种预设主题色 + 自定义颜色
-- 深色/浅色/自动主题切换
-- 流畅的过渡动画效果
-- 响应式布局设计
-
-#### 📚 文档完善
-- 桌面应用快速开始指南
-- 完整的功能路由文档
-- 详细的API接口说明
-
-### v1.1.0 (2024-01) - 原项目版本
-
-- ✨ 新增管理后台
-- 🎛️ 股票/持仓/估值数据管理功能
-- 🔧 页面元数据配置功能
-
-### v1.0.0 (2023-12) - 原项目初始版本
-
-- 📊 自选持仓管理
-- 📈 实时行情展示
-- 💹 指数估值分析
-- 🔍 智能搜索功能
-- 🐍 集成AKShare + BaoStock
-
----
-
-## 🛠️ 开发指南
-
-### 环境变量配置
-
-创建 `.env` 文件：
 
 ```env
-# Node.js后端端口
-API_PORT=3001
-FRONTEND_PORT=5173
-ADMIN_PORT=5174
-
-# Python数据服务URL
-PYTHON_API_URL=http://localhost:8000
-BAOSTOCK_API_URL=http://localhost:8001
+AI_API_KEY=your_hiapi_key_here
+AI_API_BASE_URL=https://hiapi.online/v1
+AI_MODEL=gemini-2.5-flash-search
+BAOSTOCK_API_URL=http://127.0.0.1:8001
 ```
 
-### 数据库说明
+### 3. Run
 
-项目使用 **LowDB** (JSON文件存储)：
+<table>
+<tr><th>Terminal</th><th>Command</th><th>Service</th></tr>
+<tr><td>1</td><td><code>cd website && npm run server</code></td><td>Backend API :3001</td></tr>
+<tr><td>2</td><td><code>cd baostock && python app.py</code></td><td>BaoStock :8001</td></tr>
+<tr><td>3</td><td><code>cd desktop-app && npm start</code></td><td>Desktop App</td></tr>
+</table>
 
-- `website/server/data/db.json` - 主数据库
-  - `stocks` - 股票列表
-  - `portfolio` - 自选持仓
-  - `valuation` - 指数估值
-  - `etfs` - ETF列表
-
-### 脚本命令
+### 4. Build for Distribution
 
 ```bash
-# 桌面应用
 cd desktop-app
-npm run start         # 开发模式
-npm run build:win     # Windows打包
-npm run build:mac     # macOS打包
-npm run build:linux   # Linux打包
-
-# 用户前端
-cd website
-npm run dev           # 启动开发服务器
-npm run server        # 启动Node后端
-npm run build         # 构建生产版本
-
-# 管理后台
-cd admin
-npm run dev           # 启动开发服务器
-npm run build         # 构建生产版本
+npm run build:win     # Windows (portable + zip)
+# Output: dist/InFortuneAI-1.0.0-win-x64.exe
 ```
 
 ---
 
-## 🤝 贡献指南
+## 📡 API Reference
 
-欢迎提交 Issue 和 Pull Request！
+<details>
+<summary><b>🔵 Core APIs — Node.js Backend (:3001)</b></summary>
 
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
+<br/>
+
+| Method | Endpoint | Description |
+|:------:|:---------|:------------|
+| `POST` | `/api/chat` | AI chat (accepts `model` param from frontend) |
+| `GET` | `/api/market/overview` | Market indices overview |
+| `GET` | `/api/search?keyword=` | Stock search (fuzzy match) |
+| `GET` | `/api/stocks` | Stock list with real-time prices + MA |
+| `GET` | `/api/portfolio` | Portfolio holdings with prices |
+| `POST` | `/api/save-portfolio` | Save portfolio data |
+| `GET` | `/api/stock/:code` | Stock detail (orderbook, valuation) |
+| `GET` | `/api/stock/:code/kline` | K-line data (multi-period) |
+| `GET` | `/api/stock/:code/realtime` | Single stock real-time quote |
+| `GET` | `/api/indices/realtime?codes=` | Batch index real-time quotes |
+| `GET` | `/api/etf` | ETF list via BaoStock |
+| `GET` | `/api/valuation` | Index valuation (PE/PB) |
+| `POST` | `/api/backtest` | Strategy backtesting |
+| `POST` | `/api/ml/predict` | ML stock prediction |
+| `GET` | `/api/health` | Health check |
+
+</details>
+
+<details>
+<summary><b>🟢 BaoStock APIs (:8001)</b></summary>
+
+<br/>
+
+| Endpoint | Description |
+|:---------|:------------|
+| `/api/stock/list` | A-share stock listing |
+| `/api/etf/list` | ETF fund listing |
+| `/api/kline/history?code=&start_date=&end_date=&frequency=` | Historical K-line (daily/weekly/monthly) |
+| `/api/finance/profit/{code}` | Profitability (ROE, net margin, gross margin) |
+| `/api/finance/growth/{code}` | Growth metrics |
+| `/api/finance/balance/{code}` | Balance sheet ratios |
+| `/api/finance/cash-flow/{code}` | Cash flow statement |
+| `/api/finance/dupont/{code}` | DuPont analysis |
+| `/api/macro/deposit-rate` | Deposit interest rates |
+| `/api/macro/money-supply` | Money supply (M0/M1/M2) |
+
+</details>
+
+<details>
+<summary><b>🟡 AKShare APIs (:8000)</b></summary>
+
+<br/>
+
+| Endpoint | Description |
+|:---------|:------------|
+| `/api/a/stock/realtime/{symbol}` | A-share real-time quote |
+| `/api/a/stock/history/{symbol}` | A-share historical K-line |
+| `/api/a/stock/list` | A-share stock list |
+| `/api/hk/stock/*` | Hong Kong stocks |
+| `/api/us/stock/*` | US stocks |
+| `/api/etf/*` | ETF data |
+| `/api/index/*` | Index data |
+
+</details>
 
 ---
 
-## 📄 开源协议
+## 📁 Project Structure
 
-本项目基于 [MIT](LICENSE) 协议开源。
+<details>
+<summary><b>📂 Click to expand full directory tree</b></summary>
+
+```
+infortune-ai-desktop/
+├── 📁 desktop-app/              # Electron Desktop Application
+│   ├── main.js                  #   Main process (window, menu, tray)
+│   ├── preload.js               #   Preload script (context bridge)
+│   ├── index.html               #   Main window (10 view containers)
+│   ├── package.json             #   Electron + electron-builder config
+│   ├── 📁 scripts/              #   Frontend modules
+│   │   ├── app.js               #     App init, routing, model selector
+│   │   ├── api.js               #     AI API calls (multi-model)
+│   │   ├── api-config.js        #     MODEL_CATALOG + provider configs
+│   │   ├── api-client.js        #     HTTP client with retry/stream
+│   │   ├── chat.js              #     Chat UI logic
+│   │   ├── market.js            #     Market data (3-source fallback)
+│   │   ├── stock.js             #     Stock analysis module
+│   │   ├── portfolio.js         #     Portfolio management
+│   │   ├── zixuan.js            #     Watchlist module
+│   │   ├── zhishu.js            #     Index valuation
+│   │   ├── etf.js               #     ETF market module
+│   │   ├── strategy.js          #     Strategy backtesting
+│   │   ├── settings.js          #     Settings panel logic
+│   │   └── i18n.js              #     Internationalization
+│   └── 📁 styles/               #   CSS modules (CSS custom properties)
+│       ├── main.css, chat.css, views.css, strategy.css,
+│       ├── stock.css, portfolio.css, market.css,
+│       ├── mode.css, settings.css
+│
+├── 📁 website/                  # Vue 3 Web Application
+│   ├── 📁 src/
+│   │   ├── 📁 views/            #   Home, Zixuan, Chicang, Zhishu,
+│   │   │                        #   ETF, StockDetail, NotFound
+│   │   ├── 📁 router/           #   Vue Router (7 routes)
+│   │   ├── 📁 composables/      #   useStockApi, useAiAnalysis, etc.
+│   │   └── 📁 components/       #   AppHeader, AppFooter
+│   └── 📁 server/               # Express.js Backend
+│       ├── index.js             #   30+ API endpoints
+│       ├── stock-service.js     #   East Money data fetcher
+│       ├── websocket-service.js #   Real-time push service
+│       └── 📁 data/db.json      #   LowDB JSON storage
+│
+├── 📁 admin/                    # Admin Panel (Vue 3)
+├── 📁 baostock/                 # BaoStock Python API (FastAPI)
+├── 📁 akshare/                  # AKShare Python API (FastAPI)
+├── 📁 ml_services/              # ML Inference (backtest, prediction)
+├── 📁 docs/                     # 20+ documentation files
+└── 📁 configs/                  # Training configs
+```
+
+</details>
 
 ---
 
-## 🙏 特别致谢
+## 📊 Feature Comparison
 
-### 原作者
-- 👨‍💻 [@QoneFeng](https://github.com/QoneFeng) - 感谢提供优秀的基础项目 [InFortune.ai](https://github.com/QoneFeng/InFortune.ai)
+<div align="center">
 
-### 技术栈
-- [Electron](https://www.electronjs.org/) - 跨平台桌面应用框架
-- [Vue.js](https://vuejs.org/) - 渐进式JavaScript框架
-- [AKShare](https://www.akshare.xyz/) - 专业财经数据接口
-- [BaoStock](http://www.baostock.com) - 免费股票数据接口
-- [FastAPI](https://fastapi.tiangolo.com/) - 现代Python Web框架
-- [Tailwind CSS](https://tailwindcss.com/) - 实用优先CSS框架
-- [ECharts](https://echarts.apache.org/) - 强大的数据可视化库
+| Feature | Web App | Desktop App | Notes |
+|:--------|:-------:|:-----------:|:------|
+| 📈 Real-time Market Data | ✅ | ✅ | 3-source fallback on desktop |
+| 🤖 AI Chat (20+ models) | — | ✅ | **Desktop exclusive** |
+| 🎯 Model Selector UI | — | ✅ | **Desktop exclusive** |
+| 📎 File Upload in Chat | — | ✅ | **Desktop exclusive** |
+| 🎙️ Voice Input | — | ✅ | **Desktop exclusive** |
+| 💼 Portfolio Management | ✅ | ✅ | |
+| ⭐ Watchlist | ✅ | ✅ | |
+| 📊 Index Valuation | ✅ | ✅ | |
+| 📦 ETF Market | ✅ | ✅ | |
+| 🧪 Strategy Backtesting | ✅ | ✅ | 5 strategies: MA/MACD/KDJ/RSI/BB |
+| 🔍 Smart Stock Search | ✅ | ✅ | |
+| 🎨 Theme Customization | — | ✅ | 6 colors + dark/light/auto |
+| 🌍 Multi-language | — | ✅ | CN/TW/EN/JP |
+| 📱 System Tray | — | ✅ | **Desktop exclusive** |
+| 🎛️ Admin Panel | ✅ | — | Web exclusive |
 
----
-
-## 📚 文档中心
-
-完整的项目文档已整理到 **[docs/](docs/)** 目录，包含20份详细文档：
-
-### 📖 核心文档
-
-- **[文档索引 INDEX.md](docs/INDEX.md)** - 完整的文档导航和查找指南
-- **[快速开始 QUICK_START_DESKTOP.md](docs/QUICK_START_DESKTOP.md)** - 桌面应用快速入门
-- **[Release发布指南 RELEASE_GUIDE.md](docs/RELEASE_GUIDE.md)** - GitHub Release完整流程
-
-### 🎯 按需查找
-
-| 需求 | 推荐文档 |
-|------|----------|
-| **使用应用** | [快速开始](docs/QUICK_START_DESKTOP.md) · [测试指南](docs/QUICK_TEST_GUIDE.md) · [API配置](docs/API_CONFIGURATION_GUIDE.md) |
-| **开发贡献** | [实现报告](docs/FINAL_IMPLEMENTATION_REPORT.md) · [构建指南](docs/BUILD_DESKTOP_APP.md) · [打包教程](docs/HOW_TO_BUILD.md) |
-| **项目发布** | [Release指南](docs/RELEASE_GUIDE.md) · [检查清单](docs/FINAL_RELEASE_CHECKLIST.md) · [发布说明](docs/RELEASE_NOTES_v1.0.0.md) |
-| **功能了解** | [功能报告](docs/FEATURE_COMPLETENESS_REPORT.md) · [策略回测](docs/STRATEGY_BACKTEST_COMPLETE.md) · [API总结](docs/API_IMPLEMENTATION_SUMMARY.md) |
-
-**查看完整文档**: [docs/INDEX.md](docs/INDEX.md) 📚
+</div>
 
 ---
 
-## 📞 联系方式
+## 📝 Changelog
 
-- **GitHub**: [@sjkncs](https://github.com/sjkncs)
-- **Email**: shiawasong@gmail.com
-- **Website**: https://sjkncs.github.io/navi-hawa-blog/
+### v1.0.0 (2026-02-24) — In Fortune AI Release
+
+> [!NOTE]
+> Project renamed from JiuCai (久财) to **In Fortune AI**. Complete codebase rebranding across 76+ files.
+
+**🤖 Multi-Model AI**
+- 20+ models across 5 categories (Dialogue, Search, Tool-calling, GPT/Grok, Image Gen)
+- In-chat model selector with categorized dropdown
+- Backend `/api/chat` now accepts dynamic `model` parameter
+
+**📈 Market Data Integration**
+- BaoStock direct connection for A-share index K-line data
+- East Money free API for real-time index quotes
+- 3-tier fallback architecture (Backend → BaoStock → East Money)
+
+**💬 Chat Enhancements**
+- File upload support (images, PDF, Word, Excel, CSV, Markdown)
+- Voice input via Web Speech API
+- Chat history with timestamps, persisted to localStorage
+
+**🖥️ Desktop Fixes**
+- Fixed Windows keyboard input/IME in Electron (menu + focus fixes)
+- Updated CSP for multi-origin data access
+- Increased API timeout to 60s, max_tokens to 8000
+
+---
+
+## 🤝 Contributing
+
+1. **Fork** this repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push: `git push origin feature/amazing-feature`
+5. Open a **Pull Request**
+
+> [!TIP]
+> Check [docs/INDEX.md](docs/INDEX.md) for the full documentation index with 20+ guides.
+
+---
+
+## 🙏 Credits
+
+<table>
+<tr>
+<td align="center"><a href="https://github.com/QoneFeng"><b>@QoneFeng</b></a><br/>Original InFortune.ai project</td>
+<td align="center"><a href="https://github.com/sjkncs"><b>@sjkncs</b></a><br/>Desktop app & multi-model integration</td>
+</tr>
+</table>
+
+**Built with:** [Electron](https://www.electronjs.org/) · [Vue.js](https://vuejs.org/) · [FastAPI](https://fastapi.tiangolo.com/) · [BaoStock](http://www.baostock.com) · [AKShare](https://www.akshare.xyz/) · [TailwindCSS](https://tailwindcss.com/) · [ECharts](https://echarts.apache.org/)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,20,24&height=150&section=footer)
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:1f6feb&height=120&section=footer)
 
-<p>
-  <strong>Made with ❤️ by Yangting SONG (sjkncs)</strong>
-</p>
+<br/>
 
-<p>
-  <strong>久经风雨，财智自成 | Mathematics is the language of nature</strong>
-</p>
+**Made with ❤️ by [Yangting SONG](https://github.com/sjkncs)**
 
-<p>
-  <img src="https://img.shields.io/badge/⭐-Star%20on%20GitHub-yellow?style=for-the-badge" alt="Star">
-  <img src="https://img.shields.io/badge/🔔-Watch%20Updates-blue?style=for-the-badge" alt="Watch">
-  <img src="https://img.shields.io/badge/🍴-Fork%20&%20Contribute-green?style=for-the-badge" alt="Fork">
-</p>
+<sub>Mathematics is the language of nature</sub>
+
+<br/>
+
+<a href="https://github.com/sjkncs/infortune-ai-desktop"><img src="https://img.shields.io/badge/⭐_Star_This_Repo-e3b341?style=for-the-badge" alt="Star"></a>
+<a href="https://github.com/sjkncs/infortune-ai-desktop/fork"><img src="https://img.shields.io/badge/🍴_Fork_&_Contribute-8957e5?style=for-the-badge" alt="Fork"></a>
+<a href="https://github.com/sjkncs/infortune-ai-desktop/issues"><img src="https://img.shields.io/badge/🐛_Report_Issue-da3633?style=for-the-badge" alt="Issues"></a>
 
 </div>
