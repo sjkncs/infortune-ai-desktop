@@ -1,0 +1,264 @@
+/**
+ * 市场行情样式
+ * Market Styles
+ */
+
+/* 市场概览容器 */
+.market-overview {
+  padding: var(--spacing-xl);
+  position: relative;
+}
+
+.market-overview h2 {
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 指数卡片容器 */
+.market-indicators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* 指数卡片 */
+.indicator-card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  border: 2px solid transparent;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.indicator-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transition: transform var(--transition-fast);
+}
+
+.indicator-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.indicator-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* 更新动画 */
+.indicator-card.updating {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* 正涨负跌颜色 */
+.indicator-card.positive {
+  background: rgba(244, 67, 54, 0.08);
+}
+
+.indicator-card.negative {
+  background: rgba(76, 175, 80, 0.08);
+}
+
+/* 指数标签 */
+.indicator-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* 指数数值 */
+.indicator-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* 涨跌幅 */
+.indicator-change {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.indicator-change.positive {
+  color: #f44336;
+}
+
+.indicator-change.negative {
+  color: #4caf50;
+}
+
+/* 成交量 */
+.indicator-volume {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+}
+
+/* 板块区域 */
+.market-sectors {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.market-sectors h3 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: 18px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 板块列表 */
+.sectors-list {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.sector-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--spacing-md);
+  align-items: center;
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.sector-item:hover {
+  background: var(--bg-tertiary);
+  transform: translateX(4px);
+}
+
+.sector-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sector-stocks {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.sector-change {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.sector-change.positive {
+  color: #f44336;
+  background: #ffebee;
+}
+
+.sector-change.negative {
+  color: #4caf50;
+  background: #e8f5e9;
+}
+
+/* 刷新提示 */
+.refresh-toast {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1000;
+  animation: slideInRight 0.3s ease, fadeOut 0.3s ease 1.7s;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.refresh-toast i {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .market-indicators {
+    grid-template-columns: 1fr;
+  }
+  
+  .indicator-value {
+    font-size: 28px;
+  }
+  
+  .indicator-change {
+    font-size: 16px;
+  }
+  
+  .sector-item {
+    grid-template-columns: 1fr auto;
+  }
+  
+  .sector-stocks {
+    display: none;
+  }
+}

@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局基础样式 */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-gray-100 font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+/* 通用组件样式 */
+@layer components {
+  /* 卡片样式 */
+  .card {
+    @apply bg-surface-card rounded-xl border border-gray-700/50 shadow-card;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-700/50 flex items-center justify-between;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  /* 按钮基础样式 */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-700 text-gray-200 hover:bg-gray-600 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-gray-600 text-gray-300 hover:bg-gray-700/50 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply text-gray-400 hover:text-gray-200 hover:bg-gray-700/30;
+  }
+
+  /* 输入框样式 */
+  .input {
+    @apply w-full px-4 py-2.5 bg-surface-light border border-gray-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200;
+  }
+
+  /* 表格样式 */
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider bg-surface-light border-b border-gray-700;
+  }
+
+  .data-table td {
+    @apply px-4 py-3 text-sm text-gray-300 border-b border-gray-700/50;
+  }
+
+  .data-table tbody tr {
+    @apply hover:bg-surface-light/50 transition-colors;
+  }
+
+  /* 涨跌颜色 */
+  .text-up {
+    @apply text-danger;
+  }
+
+  .text-down {
+    @apply text-success;
+  }
+
+  .bg-up {
+    @apply bg-danger/20 text-danger;
+  }
+
+  .bg-down {
+    @apply bg-success/20 text-success;
+  }
+
+  /* 标签样式 */
+  .tag {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full;
+  }
+
+  .tag-primary {
+    @apply bg-primary/20 text-primary-light;
+  }
+
+  .tag-success {
+    @apply bg-success/20 text-success-light;
+  }
+
+  .tag-danger {
+    @apply bg-danger/20 text-danger-light;
+  }
+
+  .tag-warning {
+    @apply bg-warning/20 text-warning-light;
+  }
+
+  /* 加载动画 */
+  .loading-spinner {
+    @apply animate-spin h-5 w-5 border-2 border-gray-400 border-t-primary rounded-full;
+  }
+
+  /* 渐变背景 */
+  .gradient-primary {
+    background: linear-gradient(135deg, theme('colors.primary.DEFAULT'), theme('colors.primary.dark'));
+  }
+
+  .gradient-surface {
+    background: linear-gradient(180deg, theme('colors.surface.light'), theme('colors.surface.DEFAULT'));
+  }
+}
+
+/* 工具类 */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light;
+  }
+
+  .backdrop-blur-surface {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "infortune-ai",
+  "version": "1.0.0",
+  "description": "📊 In Fortune AI - 专业的股票分析工具",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
+    "dev:frontend": "cross-env PORT=$FRONTEND_PORT vite",
+    "dev:api": "cross-env PORT=$API_PORT node server/index.js"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.7.0",
+    "@vueuse/head": "^2.0.0",
+    "axios": "^1.13.3",
+    "cors": "^2.8.6",
+    "dayjs": "^1.11.0",
+    "dotenv": "^17.3.1",
+    "echarts": "^5.5.0",
+    "express": "^5.2.1",
+    "lowdb": "^7.0.1",
+    "pinia": "^2.1.0",
+    "vue": "^3.4.0",
+    "vue-echarts": "^6.6.0",
+    "vue-router": "^4.2.0",
+    "ws": "^8.16.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/xlsx": "^0.0.35",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "autoprefixer": "^10.4.0",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "png-to-ico": "^3.0.1",
+    "postcss": "^8.4.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0",
+    "vue-tsc": "^1.8.0"
+  }
+}

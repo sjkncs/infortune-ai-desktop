@@ -1,0 +1,74 @@
+﻿# Training Configuration
+# 训练配置文件
+
+# MLflow配置
+mlflow_uri: "http://localhost:5000"
+experiment_name: "InFortune_stock_prediction_v1"
+
+# 输出目录
+output_dir: "./outputs"
+
+# 数据配置
+data:
+  symbols:
+    - "000001.SZ"  # 平安银行
+    - "000002.SZ"  # 万科A
+    - "000858.SZ"  # 五粮液
+    - "600519.SH"  # 贵州茅台
+    - "600036.SH"  # 招商银行
+  start_date: "2020-01-01"
+  end_date: "2024-12-31"
+  n_features: 50  # 特征选择数量
+
+# 模型配置
+model:
+  version: "1.0"
+  
+  # LSTM配置
+  hidden_size: 128
+  num_layers: 3
+  
+  # Transformer配置
+  d_model: 128
+  nhead: 8
+  transformer_layers: 3
+  
+  # 通用配置
+  dropout: 0.2
+  sequence_length: 60
+  
+  # 优化器
+  learning_rate: 0.001
+  weight_decay: 0.00001
+
+# 训练配置
+training:
+  batch_size: 64
+  epochs: 100
+  patience: 10  # Early stopping patience
+  
+  # 数据分割
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  
+  # 学习率调度
+  lr_scheduler:
+    type: "ReduceLROnPlateau"
+    factor: 0.5
+    patience: 5
+    min_lr: 0.00001
+
+# 日志配置
+logging:
+  level: "INFO"
+  log_dir: "./logs"
+  
+# 检查点配置
+checkpoint:
+  save_best: true
+  save_last: true
+  save_dir: "./checkpoints"
+
+# 设备配置
+device: "cuda"  # cuda or cpu

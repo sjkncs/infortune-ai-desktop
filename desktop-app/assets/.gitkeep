@@ -1,0 +1,12 @@
+# 图标资源目录
+# Icon Assets Directory
+
+请将以下图标文件放置在此目录：
+
+1. icon.ico - Windows应用图标 (256x256)
+2. icon.png - 通用图标 (512x512)
+3. tray-icon.png - 系统托盘图标 (32x32)
+
+可以使用以下工具生成：
+- https://www.icoconverter.com/
+- https://icon-icons.com/

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1",
+    "username": "admin",
+    "password": "e10adc3949ba59abbe56e057f20f883e",
+    "nickname": "系统管理员",
+    "avatar": "",
+    "email": "",
+    "phone": "",
+    "status": "enabled",
+    "roles": [
+      "系统管理员"
+    ],
+    "createdAt": "2026-02-15 07:23:42",
+    "createdBy": "admin",
+    "updatedAt": "2026-02-15 07:23:51",
+    "updatedBy": "admin",
+    "lastLoginAt": "2026-02-15 07:54:53",
+    "lastLoginIp": "::1"
+  }
+]

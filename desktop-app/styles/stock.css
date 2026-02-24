@@ -1,0 +1,298 @@
+/**
+ * 个股分析样式
+ * Stock Analysis Styles
+ */
+
+/* 股票分析容器 */
+.stock-analysis {
+  padding: var(--spacing-xl);
+}
+
+/* 搜索框区域 */
+.stock-search-box {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.stock-search-box .stock-input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+}
+
+.stock-search-box .stock-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.stock-search-box .search-btn {
+  padding: 12px 24px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stock-search-box .search-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* 加载状态 */
+.stock-loading {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.loading-spinner i {
+  font-size: 48px;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.loading-spinner p {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+/* 错误状态 */
+.stock-error {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.error-message {
+  background: rgba(255, 183, 77, 0.1);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: inline-block;
+}
+
+.error-message i {
+  font-size: 24px;
+  color: #ff9800;
+  margin-bottom: 8px;
+}
+
+.error-message p {
+  color: #e65100;
+  margin: 0;
+}
+
+/* 股票结果容器 */
+.stock-result {
+  animation: fadeIn 0.3s ease;
+}
+
+/* 股票头部信息 */
+.stock-header {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stock-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.stock-title h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stock-market {
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stock-price-info {
+  text-align: right;
+}
+
+.current-price {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.current-price.positive {
+  color: #f44336;
+}
+
+.current-price.negative {
+  color: #4caf50;
+}
+
+.price-change {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.price-change.positive {
+  color: #f44336;
+}
+
+.price-change.negative {
+  color: #4caf50;
+}
+
+/* 基本行情信息 */
+.stock-basics {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.basics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.basic-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.basic-item .label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.basic-item .value {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* K线图区域 */
+.stock-chart-section {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.stock-chart-section h4 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: 18px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stock-chart-section canvas {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+}
+
+/* 技术指标区域 */
+.stock-indicators-section {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.stock-indicators-section h4 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: 18px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.indicators-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.indicator-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.indicator-name {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.indicator-value {
+  font-size: 24px;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.indicator-value.overbought {
+  color: #f44336;
+}
+
+.indicator-value.oversold {
+  color: #4caf50;
+}
+
+.indicator-status {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .stock-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+  
+  .stock-price-info {
+    text-align: left;
+  }
+  
+  .basics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .indicators-container {
+    grid-template-columns: 1fr;
+  }
+}

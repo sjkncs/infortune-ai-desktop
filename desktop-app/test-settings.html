@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设置功能测试</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/settings.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-header {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .test-info {
+      background: #e3f2fd;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      border-left: 4px solid #2196f3;
+    }
+    .test-status {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .status-item {
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-ok {
+      background: #4caf50;
+      color: white;
+    }
+    .status-error {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-header">
+    <h1>🧪 设置页面切换功能测试</h1>
+    <p>这是一个独立的测试页面，用于验证设置页面的导航切换功能。</p>
+    <div class="test-status" id="testStatus">
+      <div class="status-item status-ok">等待测试...</div>
+    </div>
+  </div>
+
+  <div class="test-info">
+    <h3>📋 测试说明</h3>
+    <ol>
+      <li>打开浏览器开发者工具 (F12)，查看 Console 标签</li>
+      <li>点击下方左侧的任意导航项</li>
+      <li>观察右侧内容是否切换</li>
+      <li>检查 Console 中的日志输出</li>
+    </ol>
+  </div>
+
+  <div class="settings-container">
+    <div class="settings-content">
+      <!-- 左侧导航 -->
+      <aside class="settings-sidebar">
+        <nav class="settings-nav">
+          <div class="nav-item active" data-section="general">
+            <i class="fas fa-sliders-h"></i>
+            <span>通用设置</span>
+          </div>
+          <div class="nav-item" data-section="appearance">
+            <i class="fas fa-palette"></i>
+            <span>外观</span>
+          </div>
+          <div class="nav-item" data-section="language">
+            <i class="fas fa-globe"></i>
+            <span>语言</span>
+          </div>
+          <div class="nav-item" data-section="data">
+            <i class="fas fa-database"></i>
+            <span>数据源</span>
+          </div>
+          <div class="nav-item" data-section="notification">
+            <i class="fas fa-bell"></i>
+            <span>通知</span>
+          </div>
+          <div class="nav-item" data-section="shortcut">
+            <i class="fas fa-keyboard"></i>
+            <span>快捷键</span>
+          </div>
+          <div class="nav-item" data-section="advanced">
+            <i class="fas fa-cog"></i>
+            <span>高级</span>
+          </div>
+          <div class="nav-item" data-section="about">
+            <i class="fas fa-info-circle"></i>
+            <span>关于</span>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- 右侧设置面板 -->
+      <main class="settings-main">
+        <!-- 通用设置 -->
+        <section class="settings-section active" id="general">
+          <h2>✅ 通用设置</h2>
+          <div class="test-info">
+            <p>✅ 如果你能看到这个内容，说明通用设置区域已激活！</p>
+            <p>现在点击左侧其他导航项测试切换功能。</p>
+          </div>
+        </section>
+
+        <!-- 外观设置 -->
+        <section class="settings-section" id="appearance">
+          <h2>🎨 外观设置</h2>
+          <div class="test-info">
+            <p>✅ 外观设置区域已激活！</p>
+            <p>如果你能看到这个内容，说明切换功能正常工作。</p>
+          </div>
+        </section>
+
+        <!-- 语言设置 -->
+        <section class="settings-section" id="language">
+          <h2>🌍 语言设置</h2>
+          <div class="test-info">
+            <p>✅ 语言设置区域已激活！</p>
+            <p>继续测试其他导航项。</p>
+          </div>
+        </section>
+
+        <!-- 数据源设置 -->
+        <section class="settings-section" id="data">
+          <h2>💾 数据源设置</h2>
+          <div class="test-info">
+            <p>✅ 数据源设置区域已激活！</p>
+          </div>
+        </section>
+
+        <!-- 通知设置 -->
+        <section class="settings-section" id="notification">
+          <h2>🔔 通知设置</h2>
+          <div class="test-info">
+            <p>✅ 通知设置区域已激活！</p>
+          </div>
+        </section>
+
+        <!-- 快捷键设置 -->
+        <section class="settings-section" id="shortcut">
+          <h2>⌨️ 快捷键设置</h2>
+          <div class="test-info">
+            <p>✅ 快捷键设置区域已激活！</p>
+          </div>
+        </section>
+
+        <!-- 高级设置 -->
+        <section class="settings-section" id="advanced">
+          <h2>⚙️ 高级设置</h2>
+          <div class="test-info">
+            <p>✅ 高级设置区域已激活！</p>
+          </div>
+        </section>
+
+        <!-- 关于 -->
+        <section class="settings-section" id="about">
+          <h2>ℹ️ 关于</h2>
+          <div class="test-info">
+            <p>✅ 关于页面已激活！</p>
+            <h3>In Fortune AI v1.0.0</h3>
+            <p>所有导航项都测试完成了！✨</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // 简化版的设置切换逻辑
+    console.log('🚀 测试页面加载完成');
+    
+    let testCount = 0;
+    let successCount = 0;
+
+    // 切换设置区域
+    function switchSection(sectionName) {
+      console.log(`\n📍 切换到: ${sectionName}`);
+      testCount++;
+      
+      // 更新导航
+      let navUpdated = false;
+      document.querySelectorAll('.settings-nav .nav-item').forEach(item => {
+        const isActive = item.dataset.section === sectionName;
+        if (isActive) {
+          item.classList.add('active');
+          navUpdated = true;
+        } else {
+          item.classList.remove('active');
+        }
+      });
+      
+      // 更新内容
+      let contentUpdated = false;
+      document.querySelectorAll('.settings-section').forEach(section => {
+        const isActive = section.id === sectionName;
+        if (isActive) {
+          section.classList.add('active');
+          contentUpdated = true;
+          console.log(`   ✅ 显示区域: ${section.id}`);
+        } else {
+          section.classList.remove('active');
+        }
+      });
+      
+      if (navUpdated && contentUpdated) {
+        successCount++;
+        console.log(`   ✅ 切换成功 (${successCount}/${testCount})`);
+        updateTestStatus();
+      } else {
+        console.error(`   ❌ 切换失败！`);
+        updateTestStatus();
+      }
+    }
+    
+    // 更新测试状态
+    function updateTestStatus() {
+      const statusDiv = document.getElementById('testStatus');
+      const successRate = testCount > 0 ? (successCount / testCount * 100).toFixed(0) : 0;
+      
+      statusDiv.innerHTML = `
+        <div class="status-item ${successRate >= 100 ? 'status-ok' : 'status-error'}">
+          测试次数: ${testCount}
+        </div>
+        <div class="status-item ${successRate >= 100 ? 'status-ok' : 'status-error'}">
+          成功: ${successCount}
+        </div>
+        <div class="status-item ${successRate >= 100 ? 'status-ok' : 'status-error'}">
+          成功率: ${successRate}%
+        </div>
+      `;
+    }
+    
+    // 绑定导航点击事件
+    const navItems = document.querySelectorAll('.settings-nav .nav-item');
+    console.log(`🔧 找到 ${navItems.length} 个导航项`);
+    
+    navItems.forEach((item, index) => {
+      const section = item.dataset.section;
+      console.log(`   ${index + 1}. ${section}`);
+      
+      item.addEventListener('click', () => {
+        console.log(`\n👆 点击导航项: ${section}`);
+        switchSection(section);
+      });
+    });
+    
+    console.log('\n✅ 初始化完成！现在可以点击导航项测试了。\n');
+  </script>
+</body>
+</html>

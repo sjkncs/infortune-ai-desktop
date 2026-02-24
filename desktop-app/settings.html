@@ -1,0 +1,586 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设置 - In Fortune AI</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/settings.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="settings-container">
+    <!-- 设置头部 -->
+    <header class="settings-header">
+      <button class="back-btn" id="backBtn">
+        <i class="fas fa-arrow-left"></i>
+        <span>返回</span>
+      </button>
+      <h1>设置</h1>
+      <div class="header-actions">
+        <button class="reset-btn" id="resetBtn">
+          <i class="fas fa-undo"></i>
+          <span>恢复默认</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="settings-content">
+      <!-- 左侧导航 -->
+      <aside class="settings-sidebar">
+        <nav class="settings-nav">
+          <div class="nav-item active" data-section="general">
+            <i class="fas fa-sliders-h"></i>
+            <span>通用设置</span>
+          </div>
+          <div class="nav-item" data-section="appearance">
+            <i class="fas fa-palette"></i>
+            <span>外观</span>
+          </div>
+          <div class="nav-item" data-section="language">
+            <i class="fas fa-globe"></i>
+            <span>语言</span>
+          </div>
+          <div class="nav-item" data-section="data">
+            <i class="fas fa-database"></i>
+            <span>数据源</span>
+          </div>
+          <div class="nav-item" data-section="notification">
+            <i class="fas fa-bell"></i>
+            <span>通知</span>
+          </div>
+          <div class="nav-item" data-section="shortcut">
+            <i class="fas fa-keyboard"></i>
+            <span>快捷键</span>
+          </div>
+          <div class="nav-item" data-section="advanced">
+            <i class="fas fa-cog"></i>
+            <span>高级</span>
+          </div>
+          <div class="nav-item" data-section="about">
+            <i class="fas fa-info-circle"></i>
+            <span>关于</span>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- 右侧设置面板 -->
+      <main class="settings-main">
+        <!-- 通用设置 -->
+        <section class="settings-section active" id="general">
+          <h2>通用设置</h2>
+          
+          <div class="setting-group">
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>启动时自动打开</label>
+                <span class="setting-description">开机时自动启动In Fortune AI</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="autoLaunch" title="启动时自动打开">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>最小化到托盘</label>
+                <span class="setting-description">关闭窗口时最小化到系统托盘</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="minimizeToTray" checked title="最小化到托盘">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>保存对话历史</label>
+                <span class="setting-description">自动保存所有对话记录</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="saveHistory" checked title="保存对话历史">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>历史记录保留天数</label>
+                <span class="setting-description">自动清理超过指定天数的历史</span>
+              </div>
+              <div class="setting-control">
+                <select id="historyDays" class="setting-select" title="历史记录保留天数">
+                  <option value="7">7天</option>
+                  <option value="30" selected>30天</option>
+                  <option value="90">90天</option>
+                  <option value="180">180天</option>
+                  <option value="-1">永久保存</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 外观设置 -->
+        <section class="settings-section" id="appearance">
+          <h2>外观设置</h2>
+          
+          <div class="setting-group">
+            <h3>主题</h3>
+            
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>主题模式</label>
+                <span class="setting-description">选择浅色或深色主题</span>
+              </div>
+              <div class="setting-control">
+                <div class="theme-selector">
+                  <button class="theme-option active" data-theme="light">
+                    <i class="fas fa-sun"></i>
+                    <span>浅色</span>
+                  </button>
+                  <button class="theme-option" data-theme="dark">
+                    <i class="fas fa-moon"></i>
+                    <span>深色</span>
+                  </button>
+                  <button class="theme-option" data-theme="auto">
+                    <i class="fas fa-adjust"></i>
+                    <span>跟随系统</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>主题色</label>
+                <span class="setting-description">自定义主题颜色</span>
+              </div>
+              <div class="setting-control">
+                <div class="color-picker-group">
+                  <button class="color-option active" data-color="#6366f1" title="靛蓝色"></button>
+                  <button class="color-option" data-color="#8b5cf6" title="紫色"></button>
+                  <button class="color-option" data-color="#ec4899" title="粉色"></button>
+                  <button class="color-option" data-color="#f59e0b" title="琥珀色"></button>
+                  <button class="color-option" data-color="#10b981" title="绿色"></button>
+                  <button class="color-option" data-color="#3b82f6" title="蓝色"></button>
+                  <button class="color-option custom" data-color="custom" title="自定义颜色">
+                    <i class="fas fa-palette"></i>
+                  </button>
+                  <input type="color" id="customColor" title="自定义颜色选择器">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>字体</h3>
+            
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>字体大小</label>
+                <span class="setting-description">调整界面文字大小</span>
+              </div>
+              <div class="setting-control">
+                <div class="slider-control">
+                  <span class="slider-value" id="fontSizeValue">14px</span>
+                  <input type="range" id="fontSize" min="12" max="20" value="14" step="1" title="字体大小">
+                  <div class="slider-labels">
+                    <span>小</span>
+                    <span>大</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>输入框大小</label>
+                <span class="setting-description">调整消息输入框高度</span>
+              </div>
+              <div class="setting-control">
+                <div class="slider-control">
+                  <span class="slider-value" id="inputHeightValue">80px</span>
+                  <input type="range" id="inputHeight" min="60" max="200" value="80" step="10" title="输入框大小">
+                  <div class="slider-labels">
+                    <span>紧凑</span>
+                    <span>宽松</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>行间距</label>
+                <span class="setting-description">调整消息行间距</span>
+              </div>
+              <div class="setting-control">
+                <select id="lineHeight" class="setting-select" title="行间距">
+                  <option value="1.4">紧凑</option>
+                  <option value="1.6" selected>标准</option>
+                  <option value="1.8">舒适</option>
+                  <option value="2.0">宽松</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>布局</h3>
+            
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>侧边栏宽度</label>
+                <span class="setting-description">调整左侧边栏宽度</span>
+              </div>
+              <div class="setting-control">
+                <div class="slider-control">
+                  <span class="slider-value" id="sidebarWidthValue">260px</span>
+                  <input type="range" id="sidebarWidth" min="200" max="400" value="260" step="10" title="侧边栏宽度">
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>显示动画效果</label>
+                <span class="setting-description">启用界面过渡动画</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="animations" checked title="显示动画效果">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 语言设置 -->
+        <section class="settings-section" id="language">
+          <h2>语言设置</h2>
+          
+          <div class="setting-group">
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>界面语言</label>
+                <span class="setting-description">选择应用显示语言</span>
+              </div>
+              <div class="setting-control">
+                <div class="language-grid">
+                  <button class="language-option active" data-lang="zh-CN">
+                    <span class="lang-flag">🇨🇳</span>
+                    <span class="lang-name">简体中文</span>
+                  </button>
+                  <button class="language-option" data-lang="zh-TW">
+                    <span class="lang-flag">🇹🇼</span>
+                    <span class="lang-name">繁體中文</span>
+                  </button>
+                  <button class="language-option" data-lang="en-US">
+                    <span class="lang-flag">🇺🇸</span>
+                    <span class="lang-name">English</span>
+                  </button>
+                  <button class="language-option" data-lang="ja-JP">
+                    <span class="lang-flag">🇯🇵</span>
+                    <span class="lang-name">日本語</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>自动翻译</label>
+                <span class="setting-description">自动翻译非中文内容</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="autoTranslate" title="自动翻译">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 数据源设置 -->
+        <section class="settings-section" id="data">
+          <h2>数据源设置</h2>
+          
+          <div class="setting-group">
+            <h3>AI对话配置</h3>
+            
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>AI提供商</label>
+                <span class="setting-description">选择使用的AI服务提供商</span>
+              </div>
+              <div class="setting-control">
+                <select id="aiProvider" class="setting-select" title="AI提供商">
+                  <option value="doubao">豆包AI（字节跳动）</option>
+                  <option value="openai">OpenAI</option>
+                  <option value="qwen">通义千问（阿里云）</option>
+                  <option value="wenxin">文心一言（百度）</option>
+                  <option value="mock">本地模拟（测试用）</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>API Key</label>
+                <span class="setting-description">您的API密钥（安全存储在本地）</span>
+              </div>
+              <div class="setting-control">
+                <input type="password" id="apiKey" class="setting-input" placeholder="请输入API Key">
+                <button class="test-api-btn" id="testAPIBtn">
+                  <i class="fas fa-vial"></i> 测试连接
+                </button>
+              </div>
+            </div>
+
+            <div class="setting-item" id="apiStatusItem">
+              <div class="setting-label">
+                <label>API状态</label>
+              </div>
+              <div class="setting-control">
+                <div id="apiStatus" class="api-status"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>数据源配置</h3>
+            
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>API服务器地址</label>
+                <span class="setting-description">后端API服务地址（股票数据）</span>
+              </div>
+              <div class="setting-control">
+                <input type="text" id="apiUrl" class="setting-input" value="http://localhost:3001/api" placeholder="请输入API地址">
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>数据刷新频率</label>
+                <span class="setting-description">市场数据自动刷新间隔</span>
+              </div>
+              <div class="setting-control">
+                <select id="refreshRate" class="setting-select" title="数据刷新频率">
+                  <option value="5">5秒</option>
+                  <option value="10">10秒</option>
+                  <option value="30" selected>30秒</option>
+                  <option value="60">1分钟</option>
+                  <option value="300">5分钟</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>启用实时数据</label>
+                <span class="setting-description">实时获取股票行情数据</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="realtimeData" checked title="启用实时数据">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 通知设置 -->
+        <section class="settings-section" id="notification">
+          <h2>通知设置</h2>
+          
+          <div class="setting-group">
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>桌面通知</label>
+                <span class="setting-description">接收系统桌面通知</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="desktopNotif" checked title="桌面通知">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>声音提示</label>
+                <span class="setting-description">通知时播放提示音</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="soundNotif" title="声音提示">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>价格预警</label>
+                <span class="setting-description">股票价格达到预设值时提醒</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="priceAlert" checked title="价格预警">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 快捷键设置 -->
+        <section class="settings-section" id="shortcut">
+          <h2>快捷键设置</h2>
+          
+          <div class="setting-group">
+            <div class="shortcut-list">
+              <div class="shortcut-item">
+                <span class="shortcut-label">新建对话</span>
+                <kbd class="shortcut-key">Ctrl + N</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span class="shortcut-label">发送消息</span>
+                <kbd class="shortcut-key">Enter</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span class="shortcut-label">换行</span>
+                <kbd class="shortcut-key">Shift + Enter</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span class="shortcut-label">打开设置</span>
+                <kbd class="shortcut-key">Ctrl + ,</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span class="shortcut-label">搜索</span>
+                <kbd class="shortcut-key">Ctrl + F</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span class="shortcut-label">刷新</span>
+                <kbd class="shortcut-key">Ctrl + R</kbd>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 高级设置 -->
+        <section class="settings-section" id="advanced">
+          <h2>高级设置</h2>
+          
+          <div class="setting-group">
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>开发者模式</label>
+                <span class="setting-description">启用开发者工具和调试功能</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="devMode" title="开发者模式">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>硬件加速</label>
+                <span class="setting-description">启用GPU硬件加速</span>
+              </div>
+              <div class="setting-control">
+                <label class="switch">
+                  <input type="checkbox" id="hwAccel" checked title="硬件加速">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>清除缓存</label>
+                <span class="setting-description">清除应用缓存数据</span>
+              </div>
+              <div class="setting-control">
+                <button class="danger-btn" id="clearCache">
+                  <i class="fas fa-trash-alt"></i>
+                  清除缓存
+                </button>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <label>导出数据</label>
+                <span class="setting-description">导出对话历史和设置</span>
+              </div>
+              <div class="setting-control">
+                <button class="primary-btn" id="exportData">
+                  <i class="fas fa-download"></i>
+                  导出
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 关于 -->
+        <section class="settings-section" id="about">
+          <h2>关于</h2>
+          
+          <div class="about-content">
+            <div class="about-logo">
+              <img src="assets/icon.png" alt="In Fortune AI">
+            </div>
+            <h3>In Fortune AI</h3>
+            <p class="version">版本 1.0.0</p>
+            <p class="description">专业的智能股票分析助手</p>
+            
+            <div class="about-links">
+              <a href="#" class="about-link">
+                <i class="fas fa-globe"></i>
+                官方网站
+              </a>
+              <a href="#" class="about-link">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a href="#" class="about-link">
+                <i class="fas fa-file-alt"></i>
+                使用文档
+              </a>
+              <a href="#" class="about-link">
+                <i class="fas fa-envelope"></i>
+                联系我们
+              </a>
+            </div>
+
+            <div class="about-info">
+              <p>© 2024 In Fortune AI团队. 保留所有权利.</p>
+              <p>MIT License</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="scripts/settings.js"></script>
+</body>
+</html>

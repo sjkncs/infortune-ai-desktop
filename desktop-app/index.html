@@ -1,0 +1,1142 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <title>In Fortune AI - 智能股票分析助手</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/chat.css">
+  <link rel="stylesheet" href="styles/views.css">
+  <link rel="stylesheet" href="styles/strategy.css">
+  <link rel="stylesheet" href="styles/stock.css">
+  <link rel="stylesheet" href="styles/portfolio.css">
+  <link rel="stylesheet" href="styles/market.css">
+  <link rel="stylesheet" href="styles/mode.css">
+  <link rel="stylesheet" href="styles/settings.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- 主容器 -->
+  <div class="app-container">
+    <!-- 左侧边栏 -->
+    <aside class="sidebar">
+      <!-- 用户信息 -->
+      <div class="user-profile">
+        <div class="avatar">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="user-info">
+          <div class="username" data-i18n="sidebar.username">投资者</div>
+          <div class="user-status" data-i18n="sidebar.status">在线</div>
+        </div>
+      </div>
+
+      <!-- 导航菜单 -->
+      <nav class="nav-menu">
+        <div class="nav-item active" data-view="chat">
+          <i class="fas fa-comments"></i>
+          <span data-i18n="nav.chat">智能分析</span>
+        </div>
+        <div class="nav-item" data-view="market">
+          <i class="fas fa-chart-line"></i>
+          <span data-i18n="nav.market">市场行情</span>
+        </div>
+        <div class="nav-item" data-view="stock">
+          <i class="fas fa-chart-bar"></i>
+          <span data-i18n="nav.stock">个股分析</span>
+        </div>
+        <div class="nav-item" data-view="zixuan">
+          <i class="fas fa-star"></i>
+          <span data-i18n="nav.zixuan">自选分析</span>
+        </div>
+        <div class="nav-item" data-view="portfolio">
+          <i class="fas fa-briefcase"></i>
+          <span data-i18n="nav.portfolio">持仓分析</span>
+        </div>
+        <div class="nav-item" data-view="zhishu">
+          <i class="fas fa-chart-pie"></i>
+          <span data-i18n="nav.zhishu">指数分析</span>
+        </div>
+        <div class="nav-item" data-view="etf">
+          <i class="fas fa-layer-group"></i>
+          <span data-i18n="nav.etf">ETF行情</span>
+        </div>
+        <div class="nav-item" data-view="strategy">
+          <i class="fas fa-lightbulb"></i>
+          <span data-i18n="nav.strategy">策略回测</span>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-item" data-view="mode">
+          <i class="fas fa-exchange-alt"></i>
+          <span data-i18n="nav.mode">模式切换</span>
+        </div>
+      </nav>
+
+      <!-- 对话历史 -->
+      <div class="chat-history-section">
+        <div class="section-header">
+          <span data-i18n="sidebar.history">历史对话</span>
+          <button class="new-chat-btn" title="新对话" data-i18n-title="sidebar.newchat">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="chat-history-list" id="chatHistory">
+          <!-- 对话历史将动态加载 -->
+        </div>
+      </div>
+
+      <!-- 底部设置 -->
+      <div class="sidebar-footer">
+        <div class="mode-indicator" id="modeIndicator" title="当前模式">
+          <i class="fas fa-desktop"></i>
+          <span data-i18n="sidebar.localmode">本地模式</span>
+        </div>
+        <button class="settings-btn" title="设置" data-i18n-title="sidebar.settings">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <!-- 聊天视图 -->
+      <div class="view-container active" id="chatView">
+        <!-- 欢迎屏幕 -->
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-content">
+            <div class="welcome-logo">
+              <img src="assets/icon.png" alt="In Fortune AI">
+            </div>
+            <h1 class="welcome-title" data-i18n="welcome.title">你好，投资者！</h1>
+            <p class="welcome-subtitle" data-i18n="welcome.subtitle">In Fortune AI — 专业的智能股票分析与投资决策助手</p>
+            
+            <!-- 快捷功能卡片 -->
+            <div class="quick-actions">
+              <div class="action-card" data-action="market-overview">
+                <i class="fas fa-chart-line"></i>
+                <span data-i18n="welcome.market">市场概览</span>
+              </div>
+              <div class="action-card" data-action="stock-search">
+                <i class="fas fa-search"></i>
+                <span data-i18n="welcome.search">股票查询</span>
+              </div>
+              <div class="action-card" data-action="technical-analysis">
+                <i class="fas fa-chart-area"></i>
+                <span data-i18n="welcome.technical">技术分析</span>
+              </div>
+              <div class="action-card" data-action="news-sentiment">
+                <i class="fas fa-newspaper"></i>
+                <span data-i18n="welcome.news">新闻舆情</span>
+              </div>
+              <div class="action-card" data-action="ai-prediction">
+                <i class="fas fa-brain"></i>
+                <span data-i18n="welcome.ai">AI预测</span>
+              </div>
+              <div class="action-card" data-action="risk-analysis">
+                <i class="fas fa-shield-alt"></i>
+                <span data-i18n="welcome.risk">风险评估</span>
+              </div>
+            </div>
+
+            <!-- 功能标签 -->
+            <div class="feature-tags">
+              <div class="tag" data-tag="macd"><i class="fas fa-wave-square"></i> <span data-i18n="tag.macd">MACD分析</span></div>
+              <div class="tag" data-tag="kdj"><i class="fas fa-chart-line"></i> <span data-i18n="tag.kdj">KDJ指标</span></div>
+              <div class="tag" data-tag="ma"><i class="fas fa-chart-simple"></i> <span data-i18n="tag.ma">均线系统</span></div>
+              <div class="tag" data-tag="volume"><i class="fas fa-bars"></i> <span data-i18n="tag.volume">成交量分析</span></div>
+              <div class="tag" data-tag="bollinger"><i class="fas fa-arrows-alt-v"></i> <span data-i18n="tag.bollinger">布林带</span></div>
+              <div class="tag" data-tag="rsi"><i class="fas fa-gauge-high"></i> <span data-i18n="tag.rsi">RSI强弱</span></div>
+              <div class="tag" data-tag="support"><i class="fas fa-level-up-alt"></i> <span data-i18n="tag.support">支撑位</span></div>
+              <div class="tag" data-tag="resistance"><i class="fas fa-level-down-alt"></i> <span data-i18n="tag.resistance">压力位</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 对话区域 -->
+        <div class="chat-area hidden" id="chatArea">
+          <div class="messages-container" id="messagesContainer">
+            <!-- 消息将动态添加到这里 -->
+          </div>
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="input-area">
+          <!-- 模型选择器 -->
+          <div class="model-selector-bar">
+            <button class="model-selector-btn" id="modelSelectorBtn" title="切换AI模型">
+              <i class="fas fa-robot"></i>
+              <span class="model-selector-name" id="modelSelectorName">Gemini 2.5 Flash Search</span>
+              <i class="fas fa-chevron-down model-selector-arrow"></i>
+            </button>
+            <div class="model-dropdown" id="modelDropdown"></div>
+          </div>
+
+          <input type="file" id="fileInput" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.md" style="display:none">
+          <div class="input-container">
+            <button class="attach-btn" id="attachBtn" title="上传文件/图片">
+              <i class="fas fa-paperclip"></i>
+            </button>
+            
+            <div class="input-wrapper">
+              <div class="file-preview-area" id="filePreviewArea"></div>
+              <textarea 
+                id="messageInput" 
+                placeholder="请输入您的问题，例如：分析一下贵州茅台的走势" 
+                data-i18n-ph="input.placeholder"
+                rows="1"
+              ></textarea>
+            </div>
+
+            <div class="input-actions">
+              <button class="voice-btn" id="voiceBtn" title="语音输入">
+                <i class="fas fa-microphone"></i>
+              </button>
+              <button class="send-btn" id="sendBtn" title="发送">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 底部工具栏 -->
+          <div class="input-toolbar">
+            <div class="toolbar-left">
+              <button class="tool-btn" id="realtimeDataBtn">
+                <i class="fas fa-sync-alt"></i>
+                <span>实时数据</span>
+              </button>
+              <button class="tool-btn" id="technicalBtn">
+                <i class="fas fa-chart-line"></i>
+                <span>技术指标</span>
+              </button>
+              <button class="tool-btn" id="newsBtn">
+                <i class="fas fa-newspaper"></i>
+                <span>相关新闻</span>
+              </button>
+            </div>
+
+            <div class="avatar-mini">
+              <i class="fas fa-user-circle"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 市场行情视图 -->
+      <div class="view-container" id="marketView">
+        <div class="market-overview">
+          <h2><i class="fas fa-chart-line"></i> 市场行情概览</h2>
+          <div class="market-indicators">
+            <!-- 指数卡片将由market.js动态生成 -->
+          </div>
+          
+          <!-- 热门板块 -->
+          <div class="market-sectors">
+            <!-- 板块数据将由market.js动态生成 -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 个股分析视图 -->
+      <div class="view-container" id="stockView">
+        <div class="stock-analysis">
+          <h2><i class="fas fa-chart-bar"></i> 个股分析</h2>
+          <div class="stock-search-box">
+            <input type="text" placeholder="输入股票代码或名称..." class="stock-input" title="股票搜索">
+            <button class="search-btn"><i class="fas fa-search"></i> 搜索</button>
+          </div>
+          <div class="stock-search-results" id="stockSearchResults"></div>
+          <div class="stock-detail-panel" id="stockDetailPanel"></div>
+        </div>
+      </div>
+
+      <!-- 投资组合视图 -->
+      <div class="view-container" id="portfolioView">
+        <div class="portfolio-management">
+          <div class="view-header">
+            <h2><i class="fas fa-briefcase"></i> 我的投资组合</h2>
+            <div class="view-actions">
+              <button class="btn-primary" id="addHoldingBtn"><i class="fas fa-plus"></i> 添加持仓</button>
+              <button class="btn-secondary" id="refreshPortfolioBtn"><i class="fas fa-sync-alt"></i> 刷新价格</button>
+            </div>
+          </div>
+          <div class="portfolio-summary-cards" id="portfolioSummaryCards">
+            <div class="metric-card">
+              <div class="metric-label">总市值</div>
+              <div class="metric-value" id="portfolioTotalValue">¥0.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">总收益</div>
+              <div class="metric-value" id="portfolioTotalProfit">¥0.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">总收益率</div>
+              <div class="metric-value" id="portfolioTotalReturn">0.00%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">持仓数</div>
+              <div class="metric-value" id="portfolioCount">0</div>
+            </div>
+          </div>
+          <div class="portfolio-holdings" id="portfolioHoldings">
+            <div class="empty-placeholder">
+              <i class="fas fa-inbox"></i>
+              <p>暂无持仓数据，点击"添加持仓"开始管理</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 自选分析视图 -->
+      <div class="view-container" id="zixuanView">
+        <div class="zixuan-management">
+          <div class="view-header">
+            <h2><i class="fas fa-star"></i> 自选分析</h2>
+            <div class="view-actions">
+              <button class="btn-primary" id="addZixuanBtn"><i class="fas fa-plus"></i> 添加自选</button>
+              <button class="btn-secondary" id="refreshZixuanBtn"><i class="fas fa-sync-alt"></i> 刷新</button>
+            </div>
+          </div>
+          <div class="zixuan-search">
+            <input type="text" id="zixuan-search-input" placeholder="搜索股票代码或名称添加到自选..." class="form-input">
+          </div>
+          <div class="zixuan-list" id="zixuanList">
+            <div class="loading-placeholder"><i class="fas fa-spinner fa-spin"></i> 加载自选列表...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 指数分析视图 -->
+      <div class="view-container" id="zhishuView">
+        <div class="zhishu-analysis">
+          <div class="view-header">
+            <h2><i class="fas fa-chart-pie"></i> 指数估值分析</h2>
+            <div class="view-actions">
+              <button class="btn-secondary" id="refreshZhishuBtn"><i class="fas fa-sync-alt"></i> 刷新数据</button>
+            </div>
+          </div>
+          <div class="zhishu-grid" id="zhishuGrid">
+            <div class="loading-placeholder"><i class="fas fa-spinner fa-spin"></i> 加载指数估值数据...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ETF行情视图 -->
+      <div class="view-container" id="etfView">
+        <div class="etf-market">
+          <div class="view-header">
+            <h2><i class="fas fa-layer-group"></i> ETF行情</h2>
+            <div class="view-actions">
+              <input type="text" id="etf-search-input" placeholder="搜索ETF名称或代码..." title="搜索ETF" class="form-input etf-search-field">
+              <select id="etf-sort" class="form-select etf-sort-field" title="ETF排序方式">
+                <option value="amount">按成交额</option>
+                <option value="change">按涨跌幅</option>
+                <option value="volume">按成交量</option>
+              </select>
+              <button class="btn-secondary" id="refreshEtfBtn"><i class="fas fa-sync-alt"></i> 刷新</button>
+            </div>
+          </div>
+          <div class="etf-table-wrapper" id="etfTableWrapper">
+            <div class="loading-placeholder"><i class="fas fa-spinner fa-spin"></i> 加载ETF行情数据...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 策略回测视图 -->
+      <div class="view-container" id="strategyView">
+        <div class="strategy-backtest">
+          <h2><i class="fas fa-chart-line"></i> 策略回测</h2>
+          
+          <!-- 策略配置面板 -->
+          <div class="strategy-config-panel">
+            <div class="config-section">
+              <h3><i class="fas fa-cog"></i> 回测配置</h3>
+              
+              <div class="config-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="backtest-stock">股票代码</label>
+                    <input type="text" id="backtest-stock" placeholder="例如: 600519" title="股票代码" class="form-input">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="strategy-type">策略类型</label>
+                    <select id="strategy-type" class="form-select" title="策略类型">
+                      <option value="ma">移动平均线策略 (MA)</option>
+                      <option value="macd">MACD 策略</option>
+                      <option value="kdj">KDJ 策略</option>
+                      <option value="rsi">RSI 策略</option>
+                      <option value="bollinger">布林带策略</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="start-date">开始日期</label>
+                    <input type="date" id="start-date" title="开始日期" class="form-input">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="end-date">结束日期</label>
+                    <input type="date" id="end-date" title="结束日期" class="form-input">
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="initial-capital">初始资金 (元)</label>
+                    <input type="number" id="initial-capital" value="100000" title="初始资金" class="form-input">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="commission-rate">手续费率 (%)</label>
+                    <input type="number" id="commission-rate" value="0.03" step="0.01" title="手续费率" class="form-input">
+                  </div>
+                </div>
+                
+                <div class="form-row strategy-params" id="strategyParams">
+                  <!-- 策略参数动态填充 -->
+                  <div class="form-group">
+                    <label for="param-short">短期均线</label>
+                    <input type="number" id="param-short" value="5" title="短期均线" class="form-input">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="param-long">长期均线</label>
+                    <input type="number" id="param-long" value="20" title="长期均线" class="form-input">
+                  </div>
+                </div>
+                
+                <div class="form-actions">
+                  <button class="btn-primary" id="runBacktestBtn">
+                    <i class="fas fa-play"></i> 开始回测
+                  </button>
+                  <button class="btn-secondary" id="resetBacktestBtn">
+                    <i class="fas fa-redo"></i> 重置
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 回测结果面板 -->
+          <div class="backtest-results hidden" id="backtestResults">
+            <h3><i class="fas fa-chart-bar"></i> 回测结果</h3>
+            
+            <!-- 关键指标 -->
+            <div class="result-metrics">
+              <div class="metric-card">
+                <div class="metric-label">总收益率</div>
+                <div class="metric-value positive" id="totalReturn">+0%</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-label">年化收益率</div>
+                <div class="metric-value" id="annualReturn">0%</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-label">最大回撤</div>
+                <div class="metric-value negative" id="maxDrawdown">0%</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-label">夏普比率</div>
+                <div class="metric-value" id="sharpeRatio">0.00</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-label">胜率</div>
+                <div class="metric-value" id="winRate">0%</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-label">交易次数</div>
+                <div class="metric-value" id="tradeCount">0</div>
+              </div>
+            </div>
+            
+            <!-- 收益曲线图 -->
+            <div class="result-chart">
+              <h4>收益曲线</h4>
+              <canvas id="equityCurve" width="800" height="300"></canvas>
+            </div>
+            
+            <!-- 交易记录 -->
+            <div class="trade-history">
+              <h4>交易记录</h4>
+              <div class="trade-table-wrapper">
+                <table class="trade-table">
+                  <thead>
+                    <tr>
+                      <th>日期</th>
+                      <th>操作</th>
+                      <th>价格</th>
+                      <th>数量</th>
+                      <th>金额</th>
+                      <th>手续费</th>
+                      <th>收益率</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tradeTableBody">
+                    <!-- 交易记录动态填充 -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 模式切换视图 -->
+      <div class="view-container" id="modeView">
+        <div class="mode-page">
+          <div class="mode-page-bg"></div>
+          <div class="mode-page-content">
+            <div class="mode-page-header">
+              <img src="assets/icon.png" alt="In Fortune AI" class="mode-logo">
+              <h1>选择运行模式</h1>
+              <p>在本地模式和Web模式之间自由切换，体验不同的功能场景</p>
+            </div>
+
+            <div class="mode-select-cards">
+              <!-- 本地模式卡片 -->
+              <div class="mode-select-card local-card" id="modeCardLocal">
+                <div class="mode-card-glow"></div>
+                <div class="mode-card-content">
+                  <div class="mode-icon-wrap local-icon">
+                    <i class="fas fa-desktop"></i>
+                  </div>
+                  <h2>本地模式</h2>
+                  <p class="mode-desc">完整的原生桌面体验</p>
+                  <ul class="mode-features">
+                    <li><i class="fas fa-check"></i> AI智能对话分析</li>
+                    <li><i class="fas fa-check"></i> 个股 / 自选 / 持仓管理</li>
+                    <li><i class="fas fa-check"></i> 策略回测引擎</li>
+                    <li><i class="fas fa-check"></i> 离线可用，无需服务</li>
+                    <li><i class="fas fa-check"></i> 完整设置系统</li>
+                  </ul>
+                  <button class="mode-switch-btn" id="switchLocalBtn">
+                    <i class="fas fa-desktop"></i> 切换到本地模式
+                  </button>
+                  <span class="mode-current-tag" id="localBadge">当前模式</span>
+                </div>
+              </div>
+
+              <!-- Web模式卡片 -->
+              <div class="mode-select-card web-card" id="modeCardWeb">
+                <div class="mode-card-glow"></div>
+                <div class="mode-card-content">
+                  <div class="mode-icon-wrap web-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h2>Web模式</h2>
+                  <p class="mode-desc">加载网页版完整功能</p>
+                  <ul class="mode-features">
+                    <li><i class="fas fa-check"></i> Vue3 现代化界面</li>
+                    <li><i class="fas fa-check"></i> 实时行情 WebSocket</li>
+                    <li><i class="fas fa-check"></i> 服务端 AI 分析</li>
+                    <li><i class="fas fa-check"></i> 多端数据同步</li>
+                    <li><i class="fas fa-check"></i> 需要启动网站服务</li>
+                  </ul>
+                  <button class="mode-switch-btn" id="switchWebBtn">
+                    <i class="fas fa-globe"></i> 切换到Web模式
+                  </button>
+                  <span class="mode-current-tag hidden" id="webBadge">当前模式</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 服务状态 -->
+            <div class="mode-service-panel">
+              <h3><i class="fas fa-server"></i> 服务状态监测</h3>
+              <div class="mode-service-grid">
+                <div class="mode-service-item">
+                  <span class="status-dot" id="statusVite"></span>
+                  <div class="service-info">
+                    <strong>Vite 开发服务</strong>
+                    <small>localhost:5173</small>
+                  </div>
+                </div>
+                <div class="mode-service-item">
+                  <span class="status-dot" id="statusAPI"></span>
+                  <div class="service-info">
+                    <strong>后端 API</strong>
+                    <small>localhost:3001</small>
+                  </div>
+                </div>
+                <div class="mode-service-item">
+                  <span class="status-dot" id="statusML"></span>
+                  <div class="service-info">
+                    <strong>ML 推理服务</strong>
+                    <small>localhost:8002</small>
+                  </div>
+                </div>
+              </div>
+              <button class="mode-refresh-btn" id="refreshServicesBtn" title="刷新服务状态">
+                <i class="fas fa-sync-alt"></i> 刷新状态
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 设置视图 -->
+      <div class="view-container" id="settingsView">
+        <div class="settings-container">
+          <!-- 设置头部 -->
+          <header class="settings-header">
+            <button class="back-btn" id="backBtn">
+              <i class="fas fa-arrow-left"></i>
+              <span data-i18n="settings.back">返回</span>
+            </button>
+            <h1 data-i18n="settings.title">设置</h1>
+            <div class="header-actions">
+              <button class="reset-btn" id="resetBtn">
+                <i class="fas fa-undo"></i>
+                <span data-i18n="settings.reset">恢复默认</span>
+              </button>
+            </div>
+          </header>
+
+          <div class="settings-content">
+            <!-- 左侧导航 -->
+            <aside class="settings-sidebar">
+              <nav class="settings-nav">
+                <div class="settings-nav-item active" data-section="general">
+                  <i class="fas fa-sliders-h"></i>
+                  <span data-i18n="settings.nav.general">通用设置</span>
+                </div>
+                <div class="settings-nav-item" data-section="appearance">
+                  <i class="fas fa-palette"></i>
+                  <span data-i18n="settings.nav.appearance">外观</span>
+                </div>
+                <div class="settings-nav-item" data-section="language">
+                  <i class="fas fa-globe"></i>
+                  <span data-i18n="settings.nav.language">语言</span>
+                </div>
+                <div class="settings-nav-item" data-section="data">
+                  <i class="fas fa-database"></i>
+                  <span data-i18n="settings.nav.data">数据源</span>
+                </div>
+                <div class="settings-nav-item" data-section="notification">
+                  <i class="fas fa-bell"></i>
+                  <span data-i18n="settings.nav.notification">通知</span>
+                </div>
+                <div class="settings-nav-item" data-section="shortcut">
+                  <i class="fas fa-keyboard"></i>
+                  <span data-i18n="settings.nav.shortcut">快捷键</span>
+                </div>
+                <div class="settings-nav-item" data-section="advanced">
+                  <i class="fas fa-cog"></i>
+                  <span data-i18n="settings.nav.advanced">高级</span>
+                </div>
+                <div class="settings-nav-item" data-section="about">
+                  <i class="fas fa-info-circle"></i>
+                  <span data-i18n="settings.nav.about">关于</span>
+                </div>
+              </nav>
+            </aside>
+
+            <!-- 右侧设置面板 -->
+            <main class="settings-main">
+              <!-- 通用设置 -->
+              <section class="settings-section active" id="general">
+                <h2 data-i18n="settings.general.title">通用设置</h2>
+                <div class="setting-group">
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>启动时自动打开</label>
+                      <span class="setting-description">开机时自动启动In Fortune AI</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="autoLaunch" title="启动时自动打开">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>最小化到托盘</label>
+                      <span class="setting-description">关闭窗口时最小化到系统托盘</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="minimizeToTray" checked title="最小化到托盘">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>保存对话历史</label>
+                      <span class="setting-description">自动保存所有对话记录</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="saveHistory" checked title="保存对话历史">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>历史记录保留天数</label>
+                      <span class="setting-description">自动清理超过指定天数的历史</span>
+                    </div>
+                    <div class="setting-control">
+                      <select id="historyDays" class="setting-select" title="历史记录保留天数">
+                        <option value="7">7天</option>
+                        <option value="30" selected>30天</option>
+                        <option value="90">90天</option>
+                        <option value="180">180天</option>
+                        <option value="-1">永久保存</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 外观设置 -->
+              <section class="settings-section" id="appearance">
+                <h2 data-i18n="settings.appearance.title">外观设置</h2>
+                <div class="setting-group">
+                  <h3>主题</h3>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>主题模式</label>
+                      <span class="setting-description">选择浅色或深色主题</span>
+                    </div>
+                    <div class="setting-control">
+                      <div class="theme-selector">
+                        <button class="theme-option active" data-theme="light">
+                          <i class="fas fa-sun"></i>
+                          <span>浅色</span>
+                        </button>
+                        <button class="theme-option" data-theme="dark">
+                          <i class="fas fa-moon"></i>
+                          <span>深色</span>
+                        </button>
+                        <button class="theme-option" data-theme="auto">
+                          <i class="fas fa-adjust"></i>
+                          <span>跟随系统</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>主题色</label>
+                      <span class="setting-description">自定义主题颜色</span>
+                    </div>
+                    <div class="setting-control">
+                      <div class="color-picker-group">
+                        <button class="color-option active" data-color="#6366f1" title="靛蓝色"></button>
+                        <button class="color-option" data-color="#8b5cf6" title="紫色"></button>
+                        <button class="color-option" data-color="#ec4899" title="粉色"></button>
+                        <button class="color-option" data-color="#f59e0b" title="琥珀色"></button>
+                        <button class="color-option" data-color="#10b981" title="绿色"></button>
+                        <button class="color-option" data-color="#3b82f6" title="蓝色"></button>
+                        <button class="color-option custom" data-color="custom" title="自定义颜色">
+                          <i class="fas fa-palette"></i>
+                        </button>
+                        <input type="color" id="customColor" title="自定义颜色选择器">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="setting-group">
+                  <h3>字体</h3>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>字体大小</label>
+                      <span class="setting-description">调整界面文字大小</span>
+                    </div>
+                    <div class="setting-control">
+                      <div class="slider-control">
+                        <span class="slider-value" id="fontSizeValue">14px</span>
+                        <input type="range" id="fontSize" min="12" max="20" value="14" step="1" title="字体大小">
+                        <div class="slider-labels">
+                          <span>小</span>
+                          <span>大</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>输入框大小</label>
+                      <span class="setting-description">调整消息输入框高度</span>
+                    </div>
+                    <div class="setting-control">
+                      <div class="slider-control">
+                        <span class="slider-value" id="inputHeightValue">80px</span>
+                        <input type="range" id="inputHeight" min="60" max="200" value="80" step="10" title="输入框大小">
+                        <div class="slider-labels">
+                          <span>紧凑</span>
+                          <span>宽松</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>行间距</label>
+                      <span class="setting-description">调整消息行间距</span>
+                    </div>
+                    <div class="setting-control">
+                      <select id="lineHeight" class="setting-select" title="行间距">
+                        <option value="1.4">紧凑</option>
+                        <option value="1.6" selected>标准</option>
+                        <option value="1.8">舒适</option>
+                        <option value="2.0">宽松</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="setting-group">
+                  <h3>布局</h3>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>侧边栏宽度</label>
+                      <span class="setting-description">调整左侧边栏宽度</span>
+                    </div>
+                    <div class="setting-control">
+                      <div class="slider-control">
+                        <span class="slider-value" id="sidebarWidthValue">260px</span>
+                        <input type="range" id="sidebarWidth" min="200" max="400" value="260" step="10" title="侧边栏宽度">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>显示动画效果</label>
+                      <span class="setting-description">启用界面过渡动画</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="animations" checked title="显示动画效果">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 语言设置 -->
+              <section class="settings-section" id="language">
+                <h2 data-i18n="settings.language.title">语言设置</h2>
+                <div class="setting-group">
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>界面语言</label>
+                      <span class="setting-description">选择应用显示语言</span>
+                    </div>
+                    <div class="setting-control">
+                      <div class="language-grid">
+                        <button class="language-option active" data-lang="zh-CN">
+                          <span class="lang-flag">🇨🇳</span>
+                          <span class="lang-name">简体中文</span>
+                        </button>
+                        <button class="language-option" data-lang="zh-TW">
+                          <span class="lang-flag">🇹🇼</span>
+                          <span class="lang-name">繁體中文</span>
+                        </button>
+                        <button class="language-option" data-lang="en-US">
+                          <span class="lang-flag">🇺🇸</span>
+                          <span class="lang-name">English</span>
+                        </button>
+                        <button class="language-option" data-lang="ja-JP">
+                          <span class="lang-flag">🇯🇵</span>
+                          <span class="lang-name">日本語</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>自动翻译</label>
+                      <span class="setting-description">自动翻译非中文内容</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="autoTranslate" title="自动翻译">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 数据源设置 -->
+              <section class="settings-section" id="data">
+                <h2 data-i18n="settings.data.title">数据源设置</h2>
+                <div class="setting-group">
+                  <h3>AI对话配置</h3>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>AI提供商</label>
+                      <span class="setting-description">选择使用的AI服务提供商</span>
+                    </div>
+                    <div class="setting-control">
+                      <select id="aiProvider" class="setting-select" title="AI提供商">
+                        <option value="doubao">豆包AI（字节跳动）</option>
+                        <option value="openai">OpenAI</option>
+                        <option value="qwen">通义千问（阿里云）</option>
+                        <option value="wenxin">文心一言（百度）</option>
+                        <option value="mock">本地模拟（测试用）</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>API Key</label>
+                      <span class="setting-description">您的API密钥（安全存储在本地）</span>
+                    </div>
+                    <div class="setting-control">
+                      <input type="password" id="apiKey" class="setting-input" placeholder="请输入API Key">
+                      <button class="test-api-btn" id="testAPIBtn">
+                        <i class="fas fa-vial"></i> 测试连接
+                      </button>
+                    </div>
+                  </div>
+                  <div class="setting-item" id="apiStatusItem">
+                    <div class="setting-label">
+                      <label>API状态</label>
+                    </div>
+                    <div class="setting-control">
+                      <div id="apiStatus" class="api-status"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="setting-group">
+                  <h3>数据源配置</h3>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>API服务器地址</label>
+                      <span class="setting-description">后端API服务地址（股票数据）</span>
+                    </div>
+                    <div class="setting-control">
+                      <input type="text" id="apiUrl" class="setting-input" value="http://localhost:3001/api" placeholder="请输入API地址">
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>数据刷新频率</label>
+                      <span class="setting-description">市场数据自动刷新间隔</span>
+                    </div>
+                    <div class="setting-control">
+                      <select id="refreshRate" class="setting-select" title="数据刷新频率">
+                        <option value="5">5秒</option>
+                        <option value="10">10秒</option>
+                        <option value="30" selected>30秒</option>
+                        <option value="60">1分钟</option>
+                        <option value="300">5分钟</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>启用实时数据</label>
+                      <span class="setting-description">实时获取股票行情数据</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="realtimeData" checked title="启用实时数据">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 通知设置 -->
+              <section class="settings-section" id="notification">
+                <h2 data-i18n="settings.notification.title">通知设置</h2>
+                <div class="setting-group">
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>桌面通知</label>
+                      <span class="setting-description">接收系统桌面通知</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="desktopNotif" checked title="桌面通知">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>声音提示</label>
+                      <span class="setting-description">通知时播放提示音</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="soundNotif" title="声音提示">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>价格预警</label>
+                      <span class="setting-description">股票价格达到预设值时提醒</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="priceAlert" checked title="价格预警">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 快捷键设置 -->
+              <section class="settings-section" id="shortcut">
+                <h2 data-i18n="settings.shortcut.title">快捷键设置</h2>
+                <div class="setting-group">
+                  <div class="shortcut-list">
+                    <div class="shortcut-item">
+                      <span class="shortcut-label">新建对话</span>
+                      <kbd class="shortcut-key">Ctrl + N</kbd>
+                    </div>
+                    <div class="shortcut-item">
+                      <span class="shortcut-label">发送消息</span>
+                      <kbd class="shortcut-key">Enter</kbd>
+                    </div>
+                    <div class="shortcut-item">
+                      <span class="shortcut-label">换行</span>
+                      <kbd class="shortcut-key">Shift + Enter</kbd>
+                    </div>
+                    <div class="shortcut-item">
+                      <span class="shortcut-label">打开设置</span>
+                      <kbd class="shortcut-key">Ctrl + ,</kbd>
+                    </div>
+                    <div class="shortcut-item">
+                      <span class="shortcut-label">搜索</span>
+                      <kbd class="shortcut-key">Ctrl + F</kbd>
+                    </div>
+                    <div class="shortcut-item">
+                      <span class="shortcut-label">刷新</span>
+                      <kbd class="shortcut-key">Ctrl + R</kbd>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 高级设置 -->
+              <section class="settings-section" id="advanced">
+                <h2 data-i18n="settings.advanced.title">高级设置</h2>
+                <div class="setting-group">
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>开发者模式</label>
+                      <span class="setting-description">启用开发者工具和调试功能</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="devMode" title="开发者模式">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>硬件加速</label>
+                      <span class="setting-description">启用GPU硬件加速</span>
+                    </div>
+                    <div class="setting-control">
+                      <label class="switch">
+                        <input type="checkbox" id="hwAccel" checked title="硬件加速">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>清除缓存</label>
+                      <span class="setting-description">清除应用缓存数据</span>
+                    </div>
+                    <div class="setting-control">
+                      <button class="danger-btn" id="clearCache">
+                        <i class="fas fa-trash-alt"></i>
+                        清除缓存
+                      </button>
+                    </div>
+                  </div>
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <label>导出数据</label>
+                      <span class="setting-description">导出对话历史和设置</span>
+                    </div>
+                    <div class="setting-control">
+                      <button class="primary-btn" id="exportData">
+                        <i class="fas fa-download"></i>
+                        导出
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 关于 -->
+              <section class="settings-section" id="about">
+                <h2 data-i18n="settings.about.title">关于</h2>
+                <div class="about-content">
+                  <div class="about-logo">
+                    <img src="assets/icon.png" alt="In Fortune AI">
+                  </div>
+                  <h3>In Fortune AI</h3>
+                  <p class="version">版本 1.0.0</p>
+                  <p class="description">专业的智能股票分析助手</p>
+                  <div class="about-links">
+                    <a href="#" class="about-link">
+                      <i class="fas fa-globe"></i>
+                      官方网站
+                    </a>
+                    <a href="#" class="about-link">
+                      <i class="fab fa-github"></i>
+                      GitHub
+                    </a>
+                    <a href="#" class="about-link">
+                      <i class="fas fa-file-alt"></i>
+                      使用文档
+                    </a>
+                    <a href="#" class="about-link">
+                      <i class="fas fa-envelope"></i>
+                      联系我们
+                    </a>
+                  </div>
+                  <div class="about-info">
+                    <p>© 2024 In Fortune AI团队. 保留所有权利.</p>
+                    <p>MIT License</p>
+                  </div>
+                </div>
+              </section>
+            </main>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 加载脚本 -->
+  <script src="scripts/api-config.js"></script>
+  <script src="scripts/api-client.js"></script>
+  <script src="scripts/api.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/chat.js"></script>
+  <script src="scripts/strategy.js"></script>
+  <script src="scripts/stock.js"></script>
+  <script src="scripts/portfolio.js"></script>
+  <script src="scripts/market.js"></script>
+  <script src="scripts/zixuan.js"></script>
+  <script src="scripts/zhishu.js"></script>
+  <script src="scripts/etf.js"></script>
+  <script src="scripts/i18n.js"></script>
+  <script src="scripts/settings.js"></script>
+</body>
+</html>

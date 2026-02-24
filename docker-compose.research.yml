@@ -1,0 +1,316 @@
+﻿version: '3.8'
+
+# ============================================
+# Research-Grade Docker Compose Configuration
+# 研究级容器编排配置
+# ============================================
+
+services:
+  # ====================
+  # API Gateway
+  # ====================
+  api-gateway:
+    image: kong:3.5
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: postgres
+      KONG_PG_PASSWORD: InFortune2024
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+    ports:
+      - "8000:8000"  # Proxy
+      - "8443:8443"  # Proxy SSL
+      - "8001:8001"  # Admin API
+    depends_on:
+      - postgres
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Time Series Database
+  # ====================
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    environment:
+      POSTGRES_DB: InFortune_timeseries
+      POSTGRES_USER: InFortune
+      POSTGRES_PASSWORD: InFortune2024
+    volumes:
+      - timescale-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Document Database
+  # ====================
+  mongodb:
+    image: mongo:7.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: InFortune
+      MONGO_INITDB_ROOT_PASSWORD: InFortune2024
+      MONGO_INITDB_DATABASE: InFortune_features
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Cache Layer
+  # ====================
+  redis:
+    image: redis:7.2-alpine
+    command: redis-server --requirepass InFortune2024 --maxmemory 2gb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Message Queue
+  # ====================
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    environment:
+      RABBITMQ_DEFAULT_USER: InFortune
+      RABBITMQ_DEFAULT_PASS: InFortune2024
+    ports:
+      - "5672:5672"   # AMQP
+      - "15672:15672" # Management UI
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Object Storage (MinIO)
+  # ====================
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: InFortune
+      MINIO_ROOT_PASSWORD: InFortune2024
+    volumes:
+      - minio-data:/data
+    ports:
+      - "9000:9000"   # API
+      - "9001:9001"   # Console
+    networks:
+      - InFortune-network
+
+  # ====================
+  # MLflow Tracking Server
+  # ====================
+  mlflow:
+    build: ./infrastructure/mlflow
+    environment:
+      MLFLOW_BACKEND_STORE_URI: postgresql://InFortune:InFortune2024@postgres:5432/mlflow
+      MLFLOW_DEFAULT_ARTIFACT_ROOT: s3://mlflow-artifacts
+      AWS_ACCESS_KEY_ID: InFortune
+      AWS_SECRET_ACCESS_KEY: InFortune2024
+      MLFLOW_S3_ENDPOINT_URL: http://minio:9000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+      - minio
+    networks:
+      - InFortune-network
+
+  # ====================
+  # PostgreSQL (for MLflow & Airflow)
+  # ====================
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: InFortune
+      POSTGRES_PASSWORD: InFortune2024
+      POSTGRES_MULTIPLE_DATABASES: mlflow,airflow,kong
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./infrastructure/postgres/init-multiple-databases.sh:/docker-entrypoint-initdb.d/init-multiple-databases.sh
+    ports:
+      - "5433:5432"
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Apache Airflow
+  # ====================
+  airflow-webserver:
+    build: ./infrastructure/airflow
+    command: webserver
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://InFortune:InFortune2024@postgres:5432/airflow
+      AIRFLOW__CELERY__BROKER_URL: amqp://InFortune:InFortune2024@rabbitmq:5672//
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://InFortune:InFortune2024@postgres:5432/airflow
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    networks:
+      - InFortune-network
+
+  airflow-scheduler:
+    build: ./infrastructure/airflow
+    command: scheduler
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://InFortune:InFortune2024@postgres:5432/airflow
+      AIRFLOW__CELERY__BROKER_URL: amqp://InFortune:InFortune2024@rabbitmq:5672//
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://InFortune:InFortune2024@postgres:5432/airflow
+    depends_on:
+      - postgres
+      - rabbitmq
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    networks:
+      - InFortune-network
+
+  airflow-worker:
+    build: ./infrastructure/airflow
+    command: celery worker
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://InFortune:InFortune2024@postgres:5432/airflow
+      AIRFLOW__CELERY__BROKER_URL: amqp://InFortune:InFortune2024@rabbitmq:5672//
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://InFortune:InFortune2024@postgres:5432/airflow
+    depends_on:
+      - postgres
+      - rabbitmq
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Grafana Monitoring
+  # ====================
+  grafana:
+    image: grafana/grafana:10.2.3
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: InFortune2024
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Prometheus
+  # ====================
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./infrastructure/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+    networks:
+      - InFortune-network
+
+  # ====================
+  # ML Services
+  # ====================
+  ml-training-service:
+    build: ./services/ml_training_service
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      DATABASE_URL: postgresql://InFortune:InFortune2024@timescaledb:5432/InFortune_timeseries
+      REDIS_URL: redis://:InFortune2024@redis:6379/0
+    depends_on:
+      - timescaledb
+      - redis
+      - mlflow
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+    networks:
+      - InFortune-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  ml-inference-service:
+    build: ./services/ml_inference_service
+    environment:
+      MODEL_PATH: /app/models
+      REDIS_URL: redis://:InFortune2024@redis:6379/0
+    ports:
+      - "50051:50051"  # gRPC
+    depends_on:
+      - redis
+    volumes:
+      - ./models:/app/models
+    networks:
+      - InFortune-network
+    deploy:
+      replicas: 3
+
+  # ====================
+  # Data Ingestion Service
+  # ====================
+  data-ingestion-service:
+    build: ./services/data_ingestion_service
+    environment:
+      DATABASE_URL: postgresql://InFortune:InFortune2024@timescaledb:5432/InFortune_timeseries
+      MONGODB_URL: mongodb://InFortune:InFortune2024@mongodb:27017
+      REDIS_URL: redis://:InFortune2024@redis:6379/0
+    depends_on:
+      - timescaledb
+      - mongodb
+      - redis
+    networks:
+      - InFortune-network
+
+  # ====================
+  # Feature Store Service
+  # ====================
+  feast-server:
+    build: ./services/feast_service
+    environment:
+      FEAST_REGISTRY: postgresql://InFortune:InFortune2024@timescaledb:5432/feast
+      FEAST_ONLINE_STORE: redis://:InFortune2024@redis:6379/1
+    ports:
+      - "6566:6566"
+    depends_on:
+      - timescaledb
+      - redis
+    networks:
+      - InFortune-network
+
+networks:
+  InFortune-network:
+    driver: bridge
+
+volumes:
+  timescale-data:
+  mongo-data:
+  redis-data:
+  minio-data:
+  postgres-data:
+  grafana-data:
+  prometheus-data:
